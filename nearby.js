@@ -172,12 +172,35 @@ function unscheduledActivities() {
 function ensureMap() {
   if (leafletMap || typeof L === 'undefined') return leafletMap;
   leafletMap = L.map('nearby-map', { attributionControl: true });
-  L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-    maxZoom: 19,
-    attribution: '&copy; <a href="https://www.openstreetmap.org/copyright" target="_blank" rel="noopener">OpenStreetMap</a> contributors',
-  }).addTo(leafletMap);
   markerLayer = L.layerGroup().addTo(leafletMap);
+  addEnglishBasemap(leafletMap);
   return leafletMap;
+}
+
+// OpenFreeMap's vector tiles (free, no signup, no API key, no usage limits) are added via
+// the MapLibre-GL-in-Leaflet bridge (L.maplibreGL). Their default style renders each place's
+// local-script name, so the fetched style is patched to prefer the OpenMapTiles "name:en"
+// field — falling back to the local name only when no English name is tagged — before handing
+// it to MapLibre. Falls back to plain OSM raster tiles (local-script labels) if the style
+// fetch fails, so the map still works rather than staying blank.
+async function addEnglishBasemap(map) {
+  const attribution =
+    '&copy; <a href="https://www.openstreetmap.org/copyright" target="_blank" rel="noopener">OpenStreetMap</a> contributors' +
+    ' &middot; tiles by <a href="https://openfreemap.org" target="_blank" rel="noopener">OpenFreeMap</a>';
+  try {
+    const res = await fetch('https://tiles.openfreemap.org/styles/liberty');
+    if (!res.ok) throw new Error(`style fetch failed: ${res.status}`);
+    const style = await res.json();
+    (style.layers || []).forEach((layer) => {
+      if (layer.layout && layer.layout['text-field']) {
+        layer.layout['text-field'] = ['coalesce', ['get', 'name:en'], ['get', 'name']];
+      }
+    });
+    L.maplibreGL({ style, attribution }).addTo(map);
+  } catch (err) {
+    console.warn('English map style unavailable, falling back to default OpenStreetMap tiles:', err);
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', { maxZoom: 19, attribution }).addTo(map);
+  }
 }
 
 function updateMapMarkers(sorted) {
