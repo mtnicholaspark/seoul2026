@@ -52,8 +52,12 @@ if ('serviceWorker' in navigator) {
   });
 }
 
-// Exposes window.seedAll() for the one-time console-run seed after Firebase is configured.
+// Exposes window.seedAll() / window.seedAdditions() for one-time console-run seeding
+// after Firebase is configured.
 import('./seed-data.js').then((m) => {
   window.seedAll = m.seedAll;
-  console.info('Seed data loaded. Run seedAll() in this console to populate Firestore once.');
+  window.seedAdditions = m.seedAdditions;
+  console.info(
+    'Seed data loaded. Run seedAll() once to populate Firestore, or seedAdditions() to add just the newer 2026-08-16 PDF batch without touching existing data.'
+  );
 });

@@ -11,14 +11,16 @@ import { escapeHtml, formatDayHeader, openModal, closeModal, wireUseLocationButt
 import { openPromoteModal } from './calendar.js';
 
 export const CATEGORY_LABELS = {
-  cafe: 'Animal Cafés',
+  cafe: 'Cafés',
   park: 'Parks & Nature',
   'theme-park': 'Theme Parks',
   trip: 'Day / Overnight Trips',
   museum: 'Museums & Culture',
   shopping: 'Shopping',
   photobooth: 'Photobooths',
+  diy: 'DIY Experiences',
   wellness: 'Wellness & Beauty',
+  bar: 'Bars & Nightlife',
   landmark: 'Landmarks & Views',
   other: 'Other',
 };

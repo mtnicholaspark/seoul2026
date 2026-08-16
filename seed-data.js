@@ -305,7 +305,142 @@ export const FOOD_SEED = [
   }),
 ];
 
-export async function seedAll() {
+// ---------------------------------------------------------------------------
+// 4. Additions from the 2026-08-16 "Korea 2026" PDF — unique items only,
+//    duplicates of anything already in the arrays above were skipped.
+//    Two items carry no address at all in the source (Shiba Inu Cafe, Nyu Nyu),
+//    plus a mentioned-but-unscheduled clinic (Yonsei Pain Clinic) — all three
+//    are flagged `confidence: 'unverified'` and have no lat/lng, so they show
+//    up in Wishlist but not in the Nearby feed until an address is added.
+// ---------------------------------------------------------------------------
+export const ITINERARY_ADDITIONS = [
+  itin('Han River Festival', '2026-09-06', '13:00', '21:00', ['everyone'], 'Free. Recurs every Sunday through the festival run — also falls on Sep 13 within the trip window.', {
+    location: 'Jamsu Bridge & Banpo Hangang Park',
+    status: 'tentative',
+  }),
+  itin('Han River Festival', '2026-09-13', '13:00', '21:00', ['everyone'], 'Free. Second Sunday of the festival within the trip window.', {
+    location: 'Jamsu Bridge & Banpo Hangang Park',
+    status: 'tentative',
+  }),
+  itin('Firework Night', '2026-09-05', '20:00', '21:10', ['everyone'], 'Gates open 1 PM. Free general admission or paid seating.', {
+    location: 'Yeouido Hangang Park',
+    status: 'tentative',
+  }),
+];
+
+export const WISHLIST_ADDITIONS = [
+  wish('Rain Report', 'cafe', 37.5344, 126.9942, {
+    neighborhood: 'Itaewon',
+    notes: 'Themed café where it "always rains" indoors.',
+    hours: '11 AM–9:30 PM',
+    travelFromGangnam: '258-63 Itaewon-dong (85 Sowol-ro 40-gil), Yongsan-gu',
+  }),
+  wish('Saeraul', 'cafe', 37.5665, 126.933, {
+    neighborhood: 'Yeonhui-dong',
+    notes: 'Foggy waterfall café.',
+    hours: '10 AM–9 PM (10 PM weekends)',
+    travelFromGangnam: '99 Yeonhui-ro 27-gil, Seodaemun-gu',
+  }),
+  wish('Shiba Inu Cafe', 'cafe', null, null, {
+    notes: 'Shiba Inu dog café.',
+    confidence: 'unverified',
+    flagNote: 'No address was given in the source — add a location before this will show up in Nearby.',
+  }),
+  wish('Mysterious Drink Bar', 'bar', 37.53, 126.965, {
+    neighborhood: 'Yongsan-gu',
+    notes: 'Blind/mystery drink concept bar, inside Aapex.',
+    hours: '6:30 PM–1 AM',
+    travelFromGangnam: '17-13 Hangang-daero 21-gil, Yongsan-gu',
+  }),
+  wish('Bulgwangcheon Stream', 'park', 37.6096, 126.9294, {
+    neighborhood: 'Eunpyeong-gu',
+    notes: 'Stream walkway, similar vibe to Cheonggyecheon.',
+  }),
+  wish('ODT.mode', 'photobooth', 37.4975, 127.0273, {
+    neighborhood: 'Seocho-gu',
+    notes: 'Self photobooth — more formal, full-body shots.',
+    hours: 'Mon–Thu 1–9 PM, Fri 11 AM–9 PM, Sat–Sun 10 AM–9 PM',
+    travelFromGangnam: 'B120 Taeyang Desian Louvre, 455 Gangnam-daero, Seocho-gu',
+  }),
+  wish('Whipped Official — Keychain Hand Cream', 'diy', 37.5432, 127.0548, {
+    neighborhood: 'Seongsu-dong',
+    notes: 'Make your own keychain hand cream.',
+    hours: '11 AM–8 PM',
+    cost: '₩15,000–25,000 (~$11–18)',
+    travelFromGangnam: '16 Seongsui-ro 20-gil, Seongdong-gu',
+  }),
+  wish('Adidas Hongdae Brand Center', 'diy', 37.5555, 126.9235, {
+    neighborhood: 'Hongdae',
+    notes: 'Customize Nike and Adidas shoes/clothes.',
+    hours: '10:30 AM–10 PM',
+    cost: '₩60,000–75,000 (~$43–53)',
+    travelFromGangnam: 'Mapo-gu, Donggyo-dong, Yanghwa-ro 148, 1-3층',
+  }),
+  wish('Titleist City Tour Van — Custom Golf Balls', 'diy', 37.544, 127.053, {
+    neighborhood: 'Seongsu-dong',
+    notes: 'Custom golf balls, sleeve of 3.',
+    hours: '10 AM–7 PM (closed 12–1 PM)',
+    cost: '₩25,000–35,000 per sleeve of 3 (~$18–25)',
+    travelFromGangnam: '91 Seongsui-ro, Seongdong-gu',
+  }),
+  wish('Rettere — Custom Brainwave Fragrance', 'diy', 37.555, 126.937, {
+    neighborhood: 'Hongdae',
+    notes: 'Custom fragrance based on a brainwave reading, standard 50 mL bottle.',
+    hours: '12–8 PM',
+    cost: '₩33,000–35,000 per person (~$25–35)',
+    travelFromGangnam: '2nd Floor, 22-8 Sinchon-ro 4-gil, Mapo-gu',
+  }),
+  wish('Pharmacy Skin Analysis — Optima Wellness Museum', 'wellness', 37.5045, 127.0255, {
+    neighborhood: 'Gangnam-gu',
+    notes: 'Pharmacy-style skin analysis.',
+    hours: '10 AM–10 PM',
+    travelFromGangnam: 'B1-1F, 42 Gangnam-daero 102-gil, Gangnam-gu',
+    confidence: 'best-guess',
+    flagNote: 'Source labeled this "Seongsu" but gave a Gangnam-daero/Gangnam-gu address — used the address as given.',
+  }),
+  wish('Free Color Analysis — Olive Young Central Gangnam Town', 'wellness', 37.4983, 127.0278, {
+    neighborhood: 'Seocho-gu',
+    notes: 'Free color analysis. Dongil Building, B1–4F, near Gangnam Station Exit 10.',
+    hours: '10 AM–10:30 PM',
+    travelFromGangnam: '403 Gangnam-daero, Seocho-gu',
+  }),
+  wish('Yonsei Pain Clinic', 'wellness', null, null, {
+    notes: 'Clinic mentioned without a confirmed date or address.',
+    confidence: 'unverified',
+    flagNote: 'No address or appointment date given in the source — confirm both before scheduling.',
+  }),
+  wish('Verish (Seongsu flagship)', 'shopping', 37.5443, 127.057, {
+    neighborhood: 'Seongsu-dong',
+    notes: 'Undergarments flagship store.',
+    hours: '11 AM–8 PM',
+    travelFromGangnam: '36 Yeonmujang-gil (310-63 Seongsu-dong 2-ga), Seongdong-gu',
+  }),
+  wish('Nyu Nyu', 'shopping', null, null, {
+    notes: 'Clothing shop mentioned without further detail.',
+    confidence: 'unverified',
+    flagNote: 'No address provided in the source.',
+  }),
+  wish('Ssil', 'shopping', 37.5245, 127.0359, {
+    neighborhood: 'Gangnam-gu',
+    notes: 'Jewelry. Closed Sun & Mon.',
+    hours: '12–8 PM',
+    travelFromGangnam: '3rd Floor, 71 Apgujeong-ro 46-gil, Gangnam-gu',
+  }),
+  wish('Numbering', 'shopping', 37.5248, 127.0362, {
+    neighborhood: 'Gangnam-gu',
+    notes: 'Jewelry.',
+    hours: '11 AM–8 PM',
+    travelFromGangnam: '38 Apgujeong-ro 48-gil, Gangnam-gu',
+  }),
+  wish('Jongno 3-ga Gold Street', 'shopping', 37.5703, 126.9919, {
+    neighborhood: 'Jongno-gu',
+    notes: 'Gold/jewelry shopping street.',
+    hours: '10 AM–8 PM',
+    travelFromGangnam: 'Near Exit 1, Jongno 3-ga Station (Lines 1, 3, 5)',
+  }),
+];
+
+async function seedBatch(entries) {
   let batch = writeBatch(db);
   let pending = 0;
 
@@ -320,21 +455,34 @@ export async function seedAll() {
     pending = 0;
   };
 
-  for (const item of ITINERARY_SEED) {
-    stage('itineraryItems', `${item.title}-${item.date}`, item);
-    if (pending >= 400) await flush();
-  }
-  for (const item of WISHLIST_SEED) {
-    stage('wishlistItems', item.title, { scheduled: false, ...item });
-    if (pending >= 400) await flush();
-  }
-  for (const item of FOOD_SEED) {
-    stage('foodPlaces', item.nameEn || item.nameKo, item);
+  for (const { col, idSeed, data } of entries) {
+    stage(col, idSeed, data);
     if (pending >= 400) await flush();
   }
   await flush();
+}
+
+export async function seedAll() {
+  await seedBatch([
+    ...ITINERARY_SEED.map((item) => ({ col: 'itineraryItems', idSeed: `${item.title}-${item.date}`, data: item })),
+    ...WISHLIST_SEED.map((item) => ({ col: 'wishlistItems', idSeed: item.title, data: { scheduled: false, ...item } })),
+    ...FOOD_SEED.map((item) => ({ col: 'foodPlaces', idSeed: item.nameEn || item.nameKo, data: item })),
+  ]);
 
   console.info(
     `Seeded ${ITINERARY_SEED.length} itinerary items, ${WISHLIST_SEED.length} wishlist items, ${FOOD_SEED.length} food places.`
+  );
+}
+
+// Run once (safe to re-run — same idempotent slug-based IDs) to add just the new
+// 2026-08-16 PDF items without touching anything already seeded via seedAll().
+export async function seedAdditions() {
+  await seedBatch([
+    ...ITINERARY_ADDITIONS.map((item) => ({ col: 'itineraryItems', idSeed: `${item.title}-${item.date}`, data: item })),
+    ...WISHLIST_ADDITIONS.map((item) => ({ col: 'wishlistItems', idSeed: item.title, data: { scheduled: false, ...item } })),
+  ]);
+
+  console.info(
+    `Seeded ${ITINERARY_ADDITIONS.length} new itinerary items and ${WISHLIST_ADDITIONS.length} new wishlist items (2026-08-16 PDF batch).`
   );
 }
