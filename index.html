@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover, maximum-scale=1">
+<title>Seoul 2026</title>
+<meta name="theme-color" content="#111827">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="Seoul 2026">
+<link rel="manifest" href="manifest.json">
+<link rel="apple-touch-icon" href="icons/apple-touch-icon.png">
+<link rel="icon" href="icons/favicon.png">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header class="app-header">
+  <h1>Seoul 2026</h1>
+  <span id="sync-indicator" class="sync-indicator" title="Firestore sync status">●</span>
+</header>
+
+<main id="tab-panels">
+  <section id="calendar-tab" class="tab-panel" aria-labelledby="nav-calendar"></section>
+  <section id="wishlist-tab" class="tab-panel" hidden aria-labelledby="nav-wishlist"></section>
+  <section id="nearby-tab" class="tab-panel" hidden aria-labelledby="nav-nearby"></section>
+</main>
+
+<nav class="tab-bar">
+  <button id="nav-calendar" class="tab-btn active" data-tab="calendar">
+    <span class="tab-icon">📅</span><span>Calendar</span>
+  </button>
+  <button id="nav-wishlist" class="tab-btn" data-tab="wishlist">
+    <span class="tab-icon">⭐</span><span>Wishlist</span>
+  </button>
+  <button id="nav-nearby" class="tab-btn" data-tab="nearby">
+    <span class="tab-icon">📍</span><span>Nearby</span>
+  </button>
+</nav>
+
+<div id="modal-root"></div>
+
+<script type="module" src="app.js"></script>
+</body>
+</html>

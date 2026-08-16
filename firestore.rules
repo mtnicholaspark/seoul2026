@@ -1,0 +1,21 @@
+rules_version = '2';
+
+// No login system — this trip planner is unauthenticated by design (see README).
+// Access control relies on the GitHub repo/Pages URL being private/unlisted, not on these rules.
+// Only the four documented collections are writable; everything else is denied by default.
+service cloud.firestore {
+  match /databases/{database}/documents {
+    match /itineraryItems/{itemId} {
+      allow read, write: if true;
+    }
+    match /wishlistItems/{itemId} {
+      allow read, write: if true;
+    }
+    match /foodPlaces/{itemId} {
+      allow read, write: if true;
+    }
+    match /trip/{docId} {
+      allow read, write: if true;
+    }
+  }
+}
