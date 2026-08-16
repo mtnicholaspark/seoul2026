@@ -1,26 +1,26 @@
 :root {
-  --bg: #0f1420;
-  --bg-elevated: #1a2133;
-  --bg-card: #1e2740;
-  --border: #2a3350;
-  --text: #eef1f8;
-  --text-dim: #9aa4bf;
-  --text-faint: #6b7591;
-  --accent: #6d8dff;
-  --accent-soft: rgba(109, 141, 255, 0.15);
-  --band: rgba(255, 184, 76, 0.12);
-  --band-border: #ffb84c;
-  --warn: #ffb84c;
-  --warn-soft: rgba(255, 184, 76, 0.15);
-  --danger: #ff6b6b;
-  --success: #4ade80;
+  --bg: #ffffff;
+  --bg-elevated: #eaf3fc;
+  --bg-card: #ffffff;
+  --border: #cfe3f5;
+  --text: #1c2b3d;
+  --text-dim: #5f7690;
+  --text-faint: #94a8bf;
+  --accent: #5b93d9;
+  --accent-soft: rgba(91, 147, 217, 0.14);
+  --band: rgba(255, 184, 76, 0.14);
+  --band-border: #f0a52e;
+  --warn: #c97a12;
+  --warn-soft: rgba(255, 184, 76, 0.18);
+  --danger: #d6483f;
+  --success: #22a35e;
   --radius: 14px;
   --radius-sm: 10px;
-  --nick: #6d8dff;
-  --alexus: #ff7ab6;
-  --gary: #4ade80;
-  --jihee: #ffcf56;
-  --everyone: #b58cff;
+  --nick: #5b93d9;
+  --alexus: #e05b96;
+  --gary: #22a35e;
+  --jihee: #d6a017;
+  --everyone: #8a63d9;
   --safe-top: env(safe-area-inset-top, 0px);
   --safe-bottom: env(safe-area-inset-bottom, 0px);
 }
@@ -46,7 +46,7 @@ html, body {
   align-items: center;
   justify-content: space-between;
   padding: calc(12px + var(--safe-top)) 16px 12px;
-  background: var(--bg);
+  background: var(--bg-elevated);
   border-bottom: 1px solid var(--border);
 }
 .app-header h1 { font-size: 18px; margin: 0; font-weight: 700; }
@@ -126,7 +126,7 @@ html, body {
 }
 .chip-dot { width: 7px; height: 7px; border-radius: 50%; display: inline-block; }
 .chip-warn { background: var(--warn-soft); color: var(--warn); }
-.chip-muted { background: rgba(255,255,255,0.06); color: var(--text-dim); }
+.chip-muted { background: rgba(28,43,61,0.06); color: var(--text-dim); }
 
 .badge-type {
   font-size: 10px;
@@ -136,8 +136,8 @@ html, body {
   border-radius: 6px;
   letter-spacing: 0.03em;
 }
-.badge-food { background: rgba(255,122,182,0.15); color: var(--alexus); }
-.badge-activity { background: rgba(109,141,255,0.15); color: var(--accent); }
+.badge-food { background: rgba(224,91,150,0.14); color: var(--alexus); }
+.badge-activity { background: rgba(91,147,217,0.14); color: var(--accent); }
 
 .btn {
   font-family: inherit;
@@ -150,7 +150,7 @@ html, body {
   color: var(--text);
 }
 .btn-primary { background: var(--accent); border-color: var(--accent); color: #0c1120; }
-.btn-danger { background: rgba(255,107,107,0.12); border-color: var(--danger); color: var(--danger); }
+.btn-danger { background: rgba(214,72,63,0.1); border-color: var(--danger); color: var(--danger); }
 .btn-sm { padding: 5px 10px; font-size: 12px; }
 .btn-block { width: 100%; }
 .btn-ghost { background: none; }
@@ -168,7 +168,7 @@ html, body {
   font-size: 26px;
   line-height: 52px;
   text-align: center;
-  box-shadow: 0 6px 18px rgba(109,141,255,0.4);
+  box-shadow: 0 6px 18px rgba(91,147,217,0.45);
   z-index: 15;
 }
 
