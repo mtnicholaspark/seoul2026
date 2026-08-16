@@ -27,7 +27,7 @@ function itin(title, date, startTime, endTime, assignedTo, notes = '', extra = {
 }
 
 function wish(title, category, lat, lng, opts = {}) {
-  return { title, category, lat, lng, notes: '', hours: '', cost: '', bestTime: '', travelFromGangnam: '', tips: '', ...opts };
+  return { title, category, lat, lng, neighborhood: '', notes: '', hours: '', cost: '', bestTime: '', travelFromGangnam: '', tips: '', ...opts };
 }
 
 function food(nameEn, nameKo, neighborhood, cuisine, priceTier, source, notes, lat, lng, opts = {}) {
@@ -66,6 +66,7 @@ export const ITINERARY_SEED = [
 // ---------------------------------------------------------------------------
 export const WISHLIST_SEED = [
   wish('Raccoon Cafe (Table A, Hongdae)', 'cafe', 37.5548, 126.9223, {
+    neighborhood: 'Hongdae',
     notes:
       'Table A — officially registered indoor zoo under Seoul\'s 2023 exotic-animal-cafe rules, trained staff; raccoons, meerkats, fennec foxes, chinchillas.',
     hours: '~12:00 PM–9:00 PM',
@@ -74,16 +75,19 @@ export const WISHLIST_SEED = [
     tips: "Korea's Dec 2023 ban on new exotic-animal cafes gives existing venues until Dec 2027 to reregister — double check current licensing on Naver Map closer to the date.",
   }),
   wish('Dog Cafe (Da Dog In The City)', 'cafe', 37.501, 127.037, {
+    neighborhood: 'Yeoksam-dong',
     notes: 'Café + dog park/hotel combo, closest good option to the stay.',
     hours: 'Mon/Thu/Sun 10:00–23:00, Fri–Sat 10:00–24:00',
     travelFromGangnam: 'Yeoksam-dong — short trip from Teheran-ro',
     tips: 'Alternative: Cafe Bite Me in Sinsa-dong (near Garosu-gil), 12:00–21:00.',
   }),
   wish('Fox Cafe (Table A, Hongdae)', 'cafe', 37.5548, 126.9223, {
+    neighborhood: 'Hongdae',
     notes: 'Same venue as the Raccoon Cafe — also houses fennec foxes, same registered-zoo legitimacy.',
     tips: 'Fox Village Cafe (Sinchon/Ihwa) has unconfirmed 2026 status — treat as unverified. "Maison Fox Cafe" in Sinsa-dong is a fashion coffee shop, not a live-animal cafe — easy to mix up by name.',
   }),
   wish('Lotte World', 'theme-park', 37.5111, 127.098, {
+    neighborhood: 'Jamsil',
     notes: 'Jamsil, Songpa-gu. Indoor "Adventure" hall + outdoor "Magic Island" — good hybrid for hot/rainy days.',
     hours: '~10 AM–9 PM',
     cost: '₩45,000–62,000 at gate, cheaper via Klook/Trazy/KKday',
@@ -91,6 +95,7 @@ export const WISHLIST_SEED = [
     travelFromGangnam: 'Line 2 direct to Jamsil, ~20–25 min, no transfer',
   }),
   wish('Everland', 'theme-park', 37.2941, 127.2029, {
+    neighborhood: 'Yongin',
     notes: 'Yongin, ~40km south of Seoul.',
     hours: '10 AM–9 PM (10 PM weekends)',
     cost: '₩59,000 gate, ~₩39,000 via discount vendors',
@@ -99,18 +104,21 @@ export const WISHLIST_SEED = [
     tips: 'Halloween decor starts in September but peaks mid-October, after the trip ends — expect early-season decor only.',
   }),
   wish('Busan (3-day trip)', 'trip', 35.1587, 129.1604, {
+    neighborhood: 'Busan',
     notes: 'Recommend 3 days. Highlights: Haeundae Beach, Gamcheon Culture Village (half day), Jagalchi Market, Gwangalli Beach (best at night for bridge lighting).',
     cost: 'KTX ~₩59,800 one-way',
     bestTime: 'Early-to-mid September — still swimmable, uncrowded beach weather',
     travelFromGangnam: 'KTX from Seoul Station, 2h15–2h40 (+20-30 min Gangnam→Seoul Station)',
   }),
   wish('Seoul Forest', 'park', 37.5443, 127.0374, {
+    neighborhood: 'Seongdong-gu',
     notes: 'Seongdong-gu, along the Han River. Deer/Eco Park, Insect Garden, Mirror Lake.',
     hours: 'Free, open 24/7',
     bestTime: 'Early morning or late afternoon to dodge midday heat',
     travelFromGangnam: 'Line 2 to Ttukseom, Exit 8, ~20-25 min, no transfer',
   }),
   wish('Seoul Botanic Park', 'park', 37.568, 126.8309, {
+    neighborhood: 'Magok',
     notes: 'Magok, Gangseo-gu. Big glass dome/greenhouse plus lake and wetland zones.',
     hours: 'Mar–Oct 9:30 AM–6 PM (themed gardens closed Mondays)',
     cost: '₩5,000 adult',
@@ -118,6 +126,7 @@ export const WISHLIST_SEED = [
     tips: 'Consider pairing with the Yeouido shopping stop — similar westward route.',
   }),
   wish('Seokchon Lake', 'park', 37.5111, 127.1023, {
+    neighborhood: 'Songpa-gu',
     notes: 'Songpa-gu, right next to Lotte World Tower. Great evening walk once the tower is lit.',
     hours: 'Free, open 24 hours',
     bestTime: 'Sunset–~midnight',
@@ -125,6 +134,7 @@ export const WISHLIST_SEED = [
     tips: 'Cherry blossom festival (late Mar–Apr) won\'t apply to this trip.',
   }),
   wish('Arte Museum, Gangneung', 'museum', 37.772, 128.933, {
+    neighborhood: 'Gangneung',
     notes: 'Nearest Arte Museum to Seoul (also a Yeosu location) — Gangwon-do coast.',
     hours: '~10 AM–8 PM',
     cost: '~₩18,000–20,000',
@@ -132,6 +142,7 @@ export const WISHLIST_SEED = [
     tips: 'Gangneung and Busan are on different KTX lines — route back through Seoul between them, not directly.',
   }),
   wish('Namsan Tower (N Seoul Tower)', 'landmark', 37.5512, 126.9882, {
+    neighborhood: 'Yongsan-gu',
     notes: 'Yongsan-gu.',
     hours: '10 AM–10:30 PM weekdays, 11 PM weekends (weather dependent)',
     cost: 'Observatory ~₩29,000 gate / ~₩18,400 online; cable car ~₩15,000 RT; combos ~₩35-38k',
@@ -139,40 +150,49 @@ export const WISHLIST_SEED = [
     travelFromGangnam: 'No direct subway — Line 2/3 to Myeongdong or Chungmuro, then cable car or 20-30 min hike, ~35-45 min total',
   }),
   wish('Shopping — Myeongdong', 'shopping', 37.5636, 126.9834, {
+    neighborhood: 'Myeongdong',
     notes: 'Dense K-beauty/fashion strip (Olive Young, Innisfree, Etude, duty-free) plus street food.',
     hours: '~10 AM–10 PM, liveliest 6–10 PM',
   }),
   wish('Shopping — Seongsu-dong', 'shopping', 37.5445, 127.0559, {
+    neighborhood: 'Seongsu-dong',
     notes: '"Brooklyn of Seoul": converted warehouses, Korean indie/design brands, Tamburins (Gentle Monster perfume concept store), rotating pop-ups.',
     hours: '~11 AM–8/9 PM',
     travelFromGangnam: 'Enter via Seongsu Station Exit 3',
   }),
   wish('Shopping — Hannam-dong', 'shopping', 37.5347, 127.0007, {
+    neighborhood: 'Hannam-dong',
     notes: 'Quieter "quiet luxury" contrast to Gangnam: designer boutiques, premium leather/accessible-luxury, high-end beauty.',
     hours: '~11 AM–8 PM',
     travelFromGangnam: 'Hangangjin or Itaewon (Line 6)',
   }),
   wish('Shopping — Yeouido', 'shopping', 37.5257, 126.9255, {
+    neighborhood: 'Yeouido',
     notes: 'Financial-district shopping: IFC Mall (underground, at Yeouido Station), The Hyundai Seoul/Parc.1, Don Quijote.',
     hours: '~10:30 AM–8/10 PM',
   }),
   wish('Pixx Toy Box Photobooth (Hongdae)', 'photobooth', 37.5563, 126.9238, {
+    neighborhood: 'Hongdae',
     notes: '1st & 2nd floor, near Hongik University Station Exit 3.',
     travelFromGangnam: '44 Yanghwa-ro 23-gil, Mapo-gu',
   }),
   wish('Pixx Toy Box Photobooth (Seongsu)', 'photobooth', 37.5445, 127.0575, {
+    neighborhood: 'Seongsu-dong',
     notes: 'Second Pixx location.',
     travelFromGangnam: '275-88 Seongsu-dong 2-ga',
   }),
   wish('Photolab Library (Sinsa)', 'photobooth', 37.5218, 127.0223, {
+    neighborhood: 'Sinsa-dong',
     notes: 'Keyring photos. Sinsa Branch, Gangnam-gu.',
     travelFromGangnam: '515-8 Sinsa-dong',
   }),
   wish('50 Page Photobook Flip Page (Hongdae)', 'photobooth', 37.558, 126.9255, {
+    neighborhood: 'Hongdae',
     notes: 'Photobook flip-page format.',
     travelFromGangnam: '42 Donggyo-ro 38-gil, Mapo-gu',
   }),
   wish('Wellness House Seoul — Free Skin Analysis', 'wellness', 37.4956, 127.0286, {
+    neighborhood: 'Gangnam / Seocho-gu',
     notes: 'Block77, Floors 1F–B2F, ~2 min walk from Gangnam Station Exit 10.',
     travelFromGangnam: '17 Seocho-daero 77-gil, Seocho-gu',
   }),

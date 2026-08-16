@@ -234,6 +234,40 @@ html, body {
 }
 .filter-pill.active { background: var(--accent); border-color: var(--accent); color: #0c1120; }
 
+.search-input {
+  width: 100%;
+  padding: 10px 14px;
+  margin-bottom: 10px;
+  border-radius: 999px;
+  border: 1px solid var(--border);
+  background: var(--bg-card);
+  color: var(--text);
+  font-family: inherit;
+  font-size: 14px;
+}
+.search-input::placeholder { color: var(--text-faint); }
+
+.toolbar-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  flex-wrap: wrap;
+  margin-bottom: 10px;
+}
+.toolbar-row .filter-row { margin-bottom: 0; }
+
+.map-container {
+  height: 60vh;
+  min-height: 320px;
+  border-radius: var(--radius);
+  overflow: hidden;
+  border: 1px solid var(--border);
+  margin-bottom: 10px;
+}
+.leaflet-popup-content { font-family: inherit; font-size: 13px; line-height: 1.4; }
+.leaflet-popup-content a { color: var(--accent); }
+
 .segmented {
   display: flex;
   background: var(--bg-elevated);

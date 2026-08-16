@@ -1,4 +1,4 @@
-const CACHE_NAME = 'seoul2026-shell-v1';
+const CACHE_NAME = 'seoul2026-shell-v2';
 const SHELL_FILES = [
   './',
   './index.html',
@@ -33,9 +33,15 @@ self.addEventListener('activate', (event) => {
 self.addEventListener('fetch', (event) => {
   const url = new URL(event.request.url);
 
-  // Never intercept Firestore/Google API traffic — always network, let Firestore's own
-  // offline cache handle resilience.
-  if (url.origin.includes('googleapis.com') || url.origin.includes('firestore') || url.origin.includes('gstatic.com')) {
+  // Never intercept Firestore/Google API or the Leaflet map CDN — always network, let
+  // Firestore's own offline cache (and the browser's HTTP cache for Leaflet) handle it.
+  if (
+    url.origin.includes('googleapis.com') ||
+    url.origin.includes('firestore') ||
+    url.origin.includes('gstatic.com') ||
+    url.origin.includes('unpkg.com') ||
+    url.origin.includes('tile.openstreetmap.org')
+  ) {
     return;
   }
 

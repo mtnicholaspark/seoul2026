@@ -139,3 +139,34 @@ export function closeModal() {
   const root = document.getElementById('modal-root');
   root.innerHTML = '';
 }
+
+// Wires a "Use my current location" button (found within `root`) to fill the lat/lng
+// inputs in the same form via a one-shot high-accuracy geolocation read. Used by the
+// food-place and wishlist add/edit forms so coordinates don't have to be typed by hand.
+export function wireUseLocationButton(root, buttonSelector, latSelector = 'input[name="lat"]', lngSelector = 'input[name="lng"]') {
+  const btn = root.querySelector(buttonSelector);
+  if (!btn) return;
+  const originalLabel = btn.textContent;
+  btn.addEventListener('click', () => {
+    if (!navigator.geolocation) {
+      alert('Geolocation is not available in this browser.');
+      return;
+    }
+    btn.disabled = true;
+    btn.textContent = 'Locating…';
+    navigator.geolocation.getCurrentPosition(
+      (pos) => {
+        root.querySelector(latSelector).value = pos.coords.latitude.toFixed(6);
+        root.querySelector(lngSelector).value = pos.coords.longitude.toFixed(6);
+        btn.disabled = false;
+        btn.textContent = originalLabel;
+      },
+      () => {
+        alert('Could not get your location — check location permissions for this site.');
+        btn.disabled = false;
+        btn.textContent = originalLabel;
+      },
+      { enableHighAccuracy: true, timeout: 10000 }
+    );
+  });
+}

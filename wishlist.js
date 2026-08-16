@@ -7,7 +7,7 @@ import {
   deleteDoc,
   onSnapshot,
 } from 'https://www.gstatic.com/firebasejs/10.13.2/firebase-firestore.js';
-import { escapeHtml, formatDayHeader, openModal, closeModal } from './utils.js';
+import { escapeHtml, formatDayHeader, openModal, closeModal, wireUseLocationButton } from './utils.js';
 import { openPromoteModal } from './calendar.js';
 
 export const CATEGORY_LABELS = {
@@ -25,14 +25,26 @@ export const CATEGORY_LABELS = {
 
 let items = [];
 let unsubscribe = null;
+let groupBy = 'category'; // 'category' | 'neighborhood'
 
 export function initWishlistTab() {
   const container = document.getElementById('wishlist-tab');
   container.innerHTML = `
+    <div class="segmented" id="wishlist-groupby">
+      <button data-group="category" class="active">By Category</button>
+      <button data-group="neighborhood">By Neighborhood</button>
+    </div>
     <div id="wishlist-list"></div>
     <button class="fab" id="wishlist-add-btn" aria-label="Add wishlist item">+</button>
   `;
   document.getElementById('wishlist-add-btn').addEventListener('click', () => openEditModal(null));
+  container.querySelectorAll('#wishlist-groupby button').forEach((btn) => {
+    btn.addEventListener('click', () => {
+      groupBy = btn.dataset.group;
+      container.querySelectorAll('#wishlist-groupby button').forEach((b) => b.classList.toggle('active', b === btn));
+      render();
+    });
+  });
 
   if (unsubscribe) unsubscribe();
   unsubscribe = onSnapshot(
@@ -53,18 +65,30 @@ function render() {
     return;
   }
 
-  const byCategory = {};
-  items.forEach((item) => {
-    const cat = item.category && CATEGORY_LABELS[item.category] ? item.category : 'other';
-    (byCategory[cat] = byCategory[cat] || []).push(item);
-  });
-  const order = Object.keys(CATEGORY_LABELS).filter((c) => byCategory[c]);
+  let groups, order, labelFor;
+  if (groupBy === 'neighborhood') {
+    groups = {};
+    items.forEach((item) => {
+      const key = item.neighborhood?.trim() || 'Unspecified';
+      (groups[key] = groups[key] || []).push(item);
+    });
+    order = Object.keys(groups).sort((a, b) => (a === 'Unspecified' ? 1 : b === 'Unspecified' ? -1 : a.localeCompare(b)));
+    labelFor = (key) => key;
+  } else {
+    groups = {};
+    items.forEach((item) => {
+      const cat = item.category && CATEGORY_LABELS[item.category] ? item.category : 'other';
+      (groups[cat] = groups[cat] || []).push(item);
+    });
+    order = Object.keys(CATEGORY_LABELS).filter((c) => groups[c]);
+    labelFor = (key) => CATEGORY_LABELS[key];
+  }
 
   listEl.innerHTML = order
     .map(
-      (cat) => `
-    <div class="section-title">${CATEGORY_LABELS[cat]}</div>
-    ${byCategory[cat]
+      (key) => `
+    <div class="section-title">${escapeHtml(labelFor(key))}</div>
+    ${groups[key]
       .sort((a, b) => a.title.localeCompare(b.title))
       .map(renderCard)
       .join('')}
@@ -127,6 +151,10 @@ function openEditModal(item) {
         </select>
       </div>
       <div class="form-field">
+        <label>Neighborhood</label>
+        <input type="text" name="neighborhood" placeholder="e.g. Hongdae, Gangnam-gu" value="${escapeHtml(item?.neighborhood ?? '')}">
+      </div>
+      <div class="form-field">
         <label>Notes</label>
         <textarea name="notes">${escapeHtml(item?.notes ?? '')}</textarea>
       </div>
@@ -141,6 +169,9 @@ function openEditModal(item) {
         <div class="form-field"><label>Latitude</label><input type="number" step="0.000001" name="lat" value="${item?.lat ?? ''}"></div>
         <div class="form-field"><label>Longitude</label><input type="number" step="0.000001" name="lng" value="${item?.lng ?? ''}"></div>
       </div>
+      <div style="margin-bottom:12px">
+        <button type="button" class="btn btn-sm" id="wl-use-location-btn">📍 Use my current location</button>
+      </div>
       <div class="modal-actions">
         ${isEdit ? `<button type="button" class="btn btn-danger" id="wl-delete-btn">Delete</button>` : ''}
         <button type="button" class="btn" id="wl-cancel-btn">Cancel</button>
@@ -150,6 +181,7 @@ function openEditModal(item) {
   `,
     (root) => {
       root.querySelector('#wl-cancel-btn').addEventListener('click', closeModal);
+      wireUseLocationButton(root, '#wl-use-location-btn');
       if (isEdit) {
         root.querySelector('#wl-delete-btn').addEventListener('click', async () => {
           if (confirm('Delete this wishlist item?')) {
@@ -164,6 +196,7 @@ function openEditModal(item) {
         const data = {
           title: fd.get('title').trim(),
           category: fd.get('category'),
+          neighborhood: fd.get('neighborhood').trim(),
           notes: fd.get('notes').trim(),
           hours: fd.get('hours').trim(),
           cost: fd.get('cost').trim(),

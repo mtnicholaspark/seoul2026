@@ -16,6 +16,7 @@ import {
   escapeHtml,
   openModal,
   closeModal,
+  wireUseLocationButton,
 } from './utils.js';
 import { openPromoteModal } from './calendar.js';
 import { CATEGORY_LABELS } from './wishlist.js';
@@ -27,18 +28,39 @@ let unsubWishlist = null;
 let origin = null;
 let typeFilter = 'all'; // 'all' | 'food' | 'activity'
 let subFilter = 'all';
+let searchQuery = '';
+let sortMode = 'distance'; // 'distance' | 'name'
+let hideCompleted = false;
+let viewMode = 'list'; // 'list' | 'map'
+let leafletMap = null;
+let markerLayer = null;
 
 export async function initNearbyTab() {
   const container = document.getElementById('nearby-tab');
   container.innerHTML = `
     <div id="nearby-origin-note" class="card-sub" style="margin-bottom:10px"></div>
+    <input type="text" id="nearby-search" class="search-input" placeholder="Search nearby places & activities…">
     <div class="segmented" id="nearby-type-filter">
       <button data-type="all" class="active">All</button>
       <button data-type="food">🍜 Food</button>
       <button data-type="activity">📍 Activities</button>
     </div>
     <div class="filter-row" id="nearby-sub-filter"></div>
+    <div class="toolbar-row">
+      <div class="filter-row" id="nearby-sort-row">
+        <button class="filter-pill active" data-sort="distance">📍 Nearest</button>
+        <button class="filter-pill" data-sort="name">🔤 Name A–Z</button>
+      </div>
+      <label class="checkbox-pill">
+        <input type="checkbox" id="nearby-hide-completed"> Hide visited/done
+      </label>
+    </div>
+    <div class="segmented" id="nearby-view-toggle">
+      <button data-view="list" class="active">☰ List</button>
+      <button data-view="map">🗺️ Map</button>
+    </div>
     <div id="nearby-list"></div>
+    <div id="nearby-map" class="map-container" style="display:none"></div>
     <button class="fab" id="nearby-add-btn" aria-label="Add food place">+</button>
   `;
 
@@ -49,6 +71,39 @@ export async function initNearbyTab() {
       subFilter = 'all';
       container.querySelectorAll('#nearby-type-filter button').forEach((b) => b.classList.toggle('active', b === btn));
       render();
+    });
+  });
+
+  document.getElementById('nearby-search').addEventListener('input', (e) => {
+    searchQuery = e.target.value;
+    render();
+  });
+
+  container.querySelectorAll('#nearby-sort-row button').forEach((btn) => {
+    btn.addEventListener('click', () => {
+      sortMode = btn.dataset.sort;
+      container.querySelectorAll('#nearby-sort-row button').forEach((b) => b.classList.toggle('active', b === btn));
+      render();
+    });
+  });
+
+  document.getElementById('nearby-hide-completed').addEventListener('change', (e) => {
+    hideCompleted = e.target.checked;
+    render();
+  });
+
+  container.querySelectorAll('#nearby-view-toggle button').forEach((btn) => {
+    btn.addEventListener('click', () => {
+      viewMode = btn.dataset.view;
+      container.querySelectorAll('#nearby-view-toggle button').forEach((b) => b.classList.toggle('active', b === btn));
+      document.getElementById('nearby-list').style.display = viewMode === 'list' ? '' : 'none';
+      const mapEl = document.getElementById('nearby-map');
+      mapEl.style.display = viewMode === 'map' ? 'block' : 'none';
+      if (viewMode === 'map') {
+        ensureMap();
+        setTimeout(() => leafletMap && leafletMap.invalidateSize(), 50);
+        render();
+      }
     });
   });
 
@@ -111,6 +166,59 @@ function unscheduledActivities() {
   return wishlistItems.filter((w) => !w.scheduled);
 }
 
+// Leaflet (global `L`, loaded via <script> in index.html) needs a visible, sized container
+// to lay itself out correctly, so the map instance is created lazily on first switch to Map
+// view rather than at tab-init time when the container is still display:none.
+function ensureMap() {
+  if (leafletMap || typeof L === 'undefined') return leafletMap;
+  leafletMap = L.map('nearby-map', { attributionControl: true });
+  L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+    maxZoom: 19,
+    attribution: '&copy; <a href="https://www.openstreetmap.org/copyright" target="_blank" rel="noopener">OpenStreetMap</a> contributors',
+  }).addTo(leafletMap);
+  markerLayer = L.layerGroup().addTo(leafletMap);
+  return leafletMap;
+}
+
+function updateMapMarkers(sorted) {
+  if (!leafletMap || !markerLayer) return;
+  markerLayer.clearLayers();
+
+  const bounds = [];
+  if (origin) {
+    L.circleMarker([origin.lat, origin.lng], {
+      radius: 9,
+      color: '#22a35e',
+      fillColor: '#22a35e',
+      fillOpacity: 0.9,
+      weight: 2,
+    })
+      .bindPopup(origin.isFallback ? 'Accommodation (fallback location)' : 'You are here')
+      .addTo(markerLayer);
+    bounds.push([origin.lat, origin.lng]);
+  }
+
+  sorted.forEach((m) => {
+    const isFood = m.kind === 'food';
+    const color = isFood ? '#e05b96' : '#5b93d9';
+    const raw = m.raw;
+    const statusText = isFood ? (raw.visited ? ' · ✓ Visited' : '') : raw.done ? ' · ✓ Done' : '';
+    L.circleMarker([m.lat, m.lng], { radius: 7, color, fillColor: color, fillOpacity: 0.85, weight: 1.5 })
+      .bindPopup(
+        `<strong>${escapeHtml(m.title)}</strong>${statusText}<br>` +
+          `<span>${escapeHtml(m.subtitle)} · ${formatDistance(m.distanceKm)}</span><br>` +
+          `<a href="${kakaoMapLink(m.title, m.lat, m.lng)}" target="_blank" rel="noopener">Kakao Map</a> · ` +
+          `<a href="${googleMapLink(m.lat, m.lng)}" target="_blank" rel="noopener">Google Maps</a>`
+      )
+      .addTo(markerLayer);
+    bounds.push([m.lat, m.lng]);
+  });
+
+  if (bounds.length > 0) {
+    leafletMap.fitBounds(bounds, { padding: [30, 30], maxZoom: 16 });
+  }
+}
+
 function render() {
   const listEl = document.getElementById('nearby-list');
   const subFilterEl = document.getElementById('nearby-sub-filter');
@@ -151,10 +259,30 @@ function render() {
     if (subFilter !== 'all') merged = merged.filter((m) => m.filterValue === subFilter);
   }
 
-  const sorted = withDistance(merged, origin);
+  if (hideCompleted) {
+    merged = merged.filter((m) => !(m.kind === 'food' ? m.raw.visited : m.raw.done));
+  }
+
+  const q = searchQuery.trim().toLowerCase();
+  if (q) {
+    merged = merged.filter((m) => {
+      const haystack = [m.title, m.subtitle, m.raw.nameKo, m.raw.notes, m.raw.tips]
+        .filter(Boolean)
+        .join(' ')
+        .toLowerCase();
+      return haystack.includes(q);
+    });
+  }
+
+  let sorted = withDistance(merged, origin);
+  if (sortMode === 'name') {
+    sorted = [...sorted].sort((a, b) => a.title.localeCompare(b.title));
+  }
+
+  updateMapMarkers(sorted);
 
   if (sorted.length === 0) {
-    listEl.innerHTML = `<div class="empty-state">Nothing nearby yet — everything here is either scheduled already or missing coordinates.</div>`;
+    listEl.innerHTML = `<div class="empty-state">Nothing matches — try a different search or filter.</div>`;
     return;
   }
 
@@ -289,6 +417,9 @@ function openFoodModal(f) {
         <div class="form-field"><label>Latitude</label><input type="number" step="0.000001" name="lat" value="${f?.lat ?? ''}"></div>
         <div class="form-field"><label>Longitude</label><input type="number" step="0.000001" name="lng" value="${f?.lng ?? ''}"></div>
       </div>
+      <div style="margin-bottom:12px">
+        <button type="button" class="btn btn-sm" id="food-use-location-btn">📍 Use my current location</button>
+      </div>
       <div class="modal-actions">
         ${isEdit ? `<button type="button" class="btn btn-danger" id="food-delete-btn">Delete</button>` : ''}
         <button type="button" class="btn" id="food-cancel-btn">Cancel</button>
@@ -298,6 +429,7 @@ function openFoodModal(f) {
   `,
     (root) => {
       root.querySelector('#food-cancel-btn').addEventListener('click', closeModal);
+      wireUseLocationButton(root, '#food-use-location-btn');
       if (isEdit) {
         root.querySelector('#food-delete-btn').addEventListener('click', async () => {
           if (confirm('Delete this food place?')) {
