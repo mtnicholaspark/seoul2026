@@ -341,10 +341,13 @@ export const WISHLIST_ADDITIONS = [
     hours: '10 AM–9 PM (10 PM weekends)',
     travelFromGangnam: '99 Yeonhui-ro 27-gil, Seodaemun-gu',
   }),
-  wish('Shiba Inu Cafe', 'cafe', null, null, {
-    notes: 'Shiba Inu dog café.',
-    confidence: 'unverified',
-    flagNote: 'No address was given in the source — add a location before this will show up in Nearby.',
+  wish('Shiba Inu Cafe (The Mi Three)', 'cafe', 37.5347, 126.9877, {
+    neighborhood: 'Itaewon',
+    notes: 'No-kids-zone Shiba Inu café, 4 dogs on site, Namsan Tower views. Closed Tue/Wed.',
+    hours: 'Mon, Thu–Sun 1–9 PM',
+    travelFromGangnam: '31 Noksapyeong-daero 40-gil, Yongi Building 2F, Yongsan-gu — near Noksapyeong Station Exit 1 or 3',
+    confidence: 'best-guess',
+    flagNote: 'Source just said "Shiba Inu Cafe" with no address — matched to The Mi Three (더미쓰리), the best-known Shiba Inu café in Seoul, via web search. Worth a quick confirm before relying on it.',
   }),
   wish('Mysterious Drink Bar', 'bar', 37.53, 126.965, {
     neighborhood: 'Yongsan-gu',
@@ -404,10 +407,12 @@ export const WISHLIST_ADDITIONS = [
     hours: '10 AM–10:30 PM',
     travelFromGangnam: '403 Gangnam-daero, Seocho-gu',
   }),
-  wish('Yonsei Pain Clinic', 'wellness', null, null, {
-    notes: 'Clinic mentioned without a confirmed date or address.',
-    confidence: 'unverified',
-    flagNote: 'No address or appointment date given in the source — confirm both before scheduling.',
+  wish('Yonsei Pain Clinic', 'wellness', 37.5172, 127.0413, {
+    neighborhood: 'Gangnam-gu',
+    notes: 'Clinic mentioned without a confirmed appointment date.',
+    travelFromGangnam: '3F Cheongdam Building, 413 Hakdong-ro, Gangnam-gu — 3 min walk from Gangnam-gu Office Station Exit 4',
+    confidence: 'best-guess',
+    flagNote: '"Yonsei Pain Clinic" is a generic name shared by several unrelated real clinics (Gwangjin-gu, Bucheon, and this one) — used Yonsei SM Pain Clinic since it\'s the closest to the accommodation. Confirm this is the right one, and get an appointment date, before relying on it.',
   }),
   wish('Verish (Seongsu flagship)', 'shopping', 37.5443, 127.057, {
     neighborhood: 'Seongsu-dong',
@@ -415,10 +420,13 @@ export const WISHLIST_ADDITIONS = [
     hours: '11 AM–8 PM',
     travelFromGangnam: '36 Yeonmujang-gil (310-63 Seongsu-dong 2-ga), Seongdong-gu',
   }),
-  wish('Nyu Nyu', 'shopping', null, null, {
-    notes: 'Clothing shop mentioned without further detail.',
-    confidence: 'unverified',
-    flagNote: 'No address provided in the source.',
+  wish('Nyu Nyu (Seongsu)', 'shopping', 37.5445, 127.0568, {
+    neighborhood: 'Seongsu-dong',
+    notes: 'Trendy fashion accessories & clothing, multiple floors.',
+    hours: '10 AM–11 PM',
+    travelFromGangnam: '89 Yeonmujang-gil, Seongdong-gu — same street as Verish',
+    confidence: 'best-guess',
+    flagNote: 'Source gave no address; matched to the Seongsu branch since it was listed right next to Verish, which is on the same street (Yeonmujang-gil). Nyu Nyu also has Myeongdong and Dongdaemun branches — confirm this is the intended one.',
   }),
   wish('Ssil', 'shopping', 37.5245, 127.0359, {
     neighborhood: 'Gangnam-gu',
