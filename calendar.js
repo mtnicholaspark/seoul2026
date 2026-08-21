@@ -62,16 +62,29 @@ function render() {
     });
   });
 
+  // Derived from the actual "Nick's PTO" itinerary items (not a hardcoded date range like the
+  // visiting-window band below) so the marking stays correct if those items are ever edited.
+  const ptoDates = new Set();
+  items.forEach((item) => {
+    if (item.title === "Nick's PTO") {
+      itemSpanDates(item).forEach((d) => ptoDates.add(d));
+    }
+  });
+
   host.innerHTML = ALL_DATES.map((dateStr) => {
     const dayItems = (byDate[dateStr] || []).sort((a, b) =>
       (a.item.startTime || '99:99').localeCompare(b.item.startTime || '99:99')
     );
     const banded = isVisitingWindow(dateStr);
+    const onPto = ptoDates.has(dateStr);
     return `
-      <div class="day-section ${banded ? 'in-visiting-window' : ''}">
+      <div class="day-section ${banded ? 'in-visiting-window' : ''} ${onPto ? 'nick-pto-day' : ''}">
         <div class="day-header">
           <span class="day-header-date">${formatDayHeader(dateStr)}</span>
-          ${banded ? '<span class="day-header-badge">Gary &amp; JiHee here</span>' : ''}
+          <span class="day-header-badges">
+            ${banded ? '<span class="day-header-badge">Gary &amp; JiHee here</span>' : ''}
+            ${onPto ? '<span class="day-header-badge day-header-badge-nick">✈️ Nick&#39;s PTO</span>' : ''}
+          </span>
         </div>
         ${
           dayItems.length === 0
