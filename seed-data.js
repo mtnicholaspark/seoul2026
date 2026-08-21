@@ -306,12 +306,12 @@ export const FOOD_SEED = [
 ];
 
 // ---------------------------------------------------------------------------
-// 4. Additions from the 2026-08-16 "Korea 2026" PDF — unique items only,
-//    duplicates of anything already in the arrays above were skipped.
-//    Two items carry no address at all in the source (Shiba Inu Cafe, Nyu Nyu),
-//    plus a mentioned-but-unscheduled clinic (Yonsei Pain Clinic) — all three
-//    are flagged `confidence: 'unverified'` and have no lat/lng, so they show
-//    up in Wishlist but not in the Nearby feed until an address is added.
+// 4. Additions made after the initial seed/deploy — the 2026-08-16 "Korea 2026" PDF,
+//    Nick's calendar items (relatives visit, PTO), and later batches of Instagram
+//    food-post screenshots (see FOOD_ADDITIONS below). Duplicates of anything already
+//    in the arrays above were skipped throughout. A few items had no address in their
+//    source at all; those are flagged `confidence: 'unverified'`/`'best-guess'` with a
+//    `flagNote`, and stay out of the Nearby feed (no lat/lng) until one is confirmed.
 // ---------------------------------------------------------------------------
 export const ITINERARY_ADDITIONS = [
   itin('Han River Festival', '2026-09-06', '13:00', '21:00', ['everyone'], 'Free. Recurs every Sunday through the festival run — also falls on Sep 13 within the trip window.', {
@@ -325,6 +325,17 @@ export const ITINERARY_ADDITIONS = [
   itin('Firework Night', '2026-09-05', '20:00', '21:10', ['everyone'], 'Gates open 1 PM. Free general admission or paid seating.', {
     location: 'Yeouido Hangang Park',
     status: 'tentative',
+  }),
+  itin('Seeing Nick\'s relatives', '2026-08-30', null, null, ['nick'], 'No specific time given yet.', {
+    status: 'confirmed',
+  }),
+  itin('Nick\'s PTO', '2026-08-31', null, null, ['nick'], 'Approved PTO — 3 days (24h).', {
+    endDate: '2026-09-02',
+    status: 'confirmed',
+  }),
+  itin('Nick\'s PTO', '2026-09-11', null, null, ['nick'], 'Approved PTO — 7 business days (56h): off Sep 11 through Sun Sep 20, back to work Mon Sep 21. Only the portion through Sep 19 (this calendar\'s current range) will show in the day-list — Sep 20-21 are recorded here but fall outside it.', {
+    endDate: '2026-09-21',
+    status: 'confirmed',
   }),
 ];
 
@@ -448,6 +459,31 @@ export const WISHLIST_ADDITIONS = [
   }),
 ];
 
+// From two batches of Instagram food-post screenshots. Places that came with a full
+// address in the source are used as-is; the 3 that didn't (Myeongdong K-Galbi, Sangsu
+// Sogul, smob) were web-searched and matched — smob couldn't be confidently matched at
+// all (search only turned up an unrelated sports-park chain of the same name), so it's
+// unverified with no coordinates until there's more to go on.
+export const FOOD_ADDITIONS = [
+  food('Bouquet de Pain', '부케 드 팽', 'Sinsa-dong / Apgujeong', 'French bakery', '', 'Instagram (_withhelen)', 'Known for salt bread (소금빵). 653-18 Sinsa-dong, Gangnam-gu. Hours 10 AM–9 PM daily.', 37.527, 127.04),
+  food('Myeongdong K-Galbi', '명동케이갈비', 'Myeongdong', 'Korean BBQ — marinated Hanwoo beef galbi', '', 'Instagram', 'Marinated Hanwoo beef galbi, cold noodles, dumplings; MSG-free house marinade.', 37.5636, 126.9834, {
+    confidence: 'best-guess',
+    flagNote: 'Source only tagged "Seoul, Korea" — address (5 Myeongdong 3-gil, Jung-gu) found via web search.',
+  }),
+  food('LAVACRO Cafe', '라바크로 카페', 'Eumseong-gun, Chungbuk — not Seoul', 'Themed café (bathroom-fixture décor)', '', 'Instagram (soulseoulfood)', 'Quirky café by bathroom brand Interbath — toilets/tiles as décor, wood-fired pizza & pasta. ~100km south of Seoul, roughly 1.5–2 hrs away, not a quick trip. 충북 음성군 대소면 대동로537번길 102. Hours 10 AM–8 PM.', 36.96, 127.523),
+  food('Sangsu Sogul', '상수소굴', 'Sangsu-dong, Mapo-gu', 'Pub/tavern (anju) — arancini, pho, grilled gamjeori-sal', '', 'Instagram (sangsuhangout)', 'Near Sangsu Station Exit 4. Hours 6 PM–2 AM daily.', 37.5478, 126.9227, {
+    confidence: 'best-guess',
+    flagNote: 'Source tag "sangsuhangout" had no address — matched via web search to 상수소굴 at 24 Dongmak-ro 14-gil, Mapo-gu.',
+  }),
+  food('Ssangmi Gopchang (Yongsan)', '쌍미곱창 용산점', 'Yongsan-gu', 'Korean BBQ — beef intestine (gopchang), hanwoo', '', 'Instagram', 'Minari mixed grill ₩27,000, same-day-butchered hanwoo mungtigi (medium) ₩33,000, fried rice ₩5,500. 서울 용산구 한강대로15길 19-20 1층.', 37.5305, 126.9655),
+  food('smob (스몹)', '스몹', 'Unknown', 'Unknown', '', 'Instagram', 'Name given with no address or other detail.', null, null, {
+    confidence: 'unverified',
+    flagNote: 'Could not confidently identify this as a food venue — web search only turned up "SMOB," an unrelated sports/entertainment park chain (Starfield malls in Hanam/Goyang/Suwon/Anseong/Daejeon), not a restaurant. Needs the original post or an address to pin down.',
+  }),
+  food('Cheongsudang (Gimpo)', '청수당 김포', 'Gurae-dong, Gimpo-si — not Seoul', 'Bakery / dessert café', '', 'Instagram', 'Large (~825㎡) bakery café, Japanese-style seating, rated 4.4. ~30–40 min from Gangnam by car, in Gimpo (Gyeonggi-do), not Seoul proper. 경기도 김포시 김포한강10로133번길 75. Hours 10 AM–10 PM (last order 9:30 PM).', 37.6404, 126.6274),
+  food('Seoyang Myeonok (Seosunra-gil)', '서양면옥 서순라길점', 'Jongno-gu', 'Korean-Italian fusion', '', 'Instagram (@seoyangmyunok.seoul)', 'Hanwoo yukhoe perilla-oil capellini ₩22,000; spicy tomato soft-tofu pasta ₩22,000. 서울 종로구 율곡로8길 45 1층. Hours 12–9:30 PM (break 4–5 PM), closed Tuesdays.', 37.5735, 126.9915),
+];
+
 async function seedBatch(entries) {
   let batch = writeBatch(db);
   let pending = 0;
@@ -482,15 +518,17 @@ export async function seedAll() {
   );
 }
 
-// Run once (safe to re-run — same idempotent slug-based IDs) to add just the new
-// 2026-08-16 PDF items without touching anything already seeded via seedAll().
+// Run once (safe to re-run — same idempotent slug-based IDs) to add just the newer
+// items (PDF batch + Instagram screenshots + calendar additions) without touching
+// anything already seeded via seedAll().
 export async function seedAdditions() {
   await seedBatch([
     ...ITINERARY_ADDITIONS.map((item) => ({ col: 'itineraryItems', idSeed: `${item.title}-${item.date}`, data: item })),
     ...WISHLIST_ADDITIONS.map((item) => ({ col: 'wishlistItems', idSeed: item.title, data: { scheduled: false, ...item } })),
+    ...FOOD_ADDITIONS.map((item) => ({ col: 'foodPlaces', idSeed: item.nameEn || item.nameKo, data: item })),
   ]);
 
   console.info(
-    `Seeded ${ITINERARY_ADDITIONS.length} new itinerary items and ${WISHLIST_ADDITIONS.length} new wishlist items (2026-08-16 PDF batch).`
+    `Seeded ${ITINERARY_ADDITIONS.length} new itinerary items, ${WISHLIST_ADDITIONS.length} new wishlist items, and ${FOOD_ADDITIONS.length} new food places.`
   );
 }
