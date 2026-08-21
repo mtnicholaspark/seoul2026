@@ -138,6 +138,7 @@ html, body {
 }
 .badge-food { background: rgba(224,91,150,0.14); color: var(--alexus); }
 .badge-activity { background: rgba(91,147,217,0.14); color: var(--accent); }
+.badge-tip { background: var(--warn-soft); color: var(--warn); }
 
 .btn {
   font-family: inherit;
@@ -371,3 +372,43 @@ html, body {
   gap: 5px;
   align-items: flex-start;
 }
+
+/* Itinerary Idea tab */
+.idea-card { cursor: default; }
+.idea-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 10px;
+  cursor: pointer;
+}
+.idea-toggle-icon {
+  color: var(--text-faint);
+  font-size: 14px;
+  flex-shrink: 0;
+  padding-top: 2px;
+  transition: transform 0.2s ease;
+}
+.idea-card.expanded .idea-toggle-icon { transform: rotate(180deg); }
+.idea-body { display: none; margin-top: 12px; }
+.idea-card.expanded .idea-body { display: block; }
+.idea-stop {
+  display: flex;
+  gap: 10px;
+  padding: 9px 0;
+  border-top: 1px solid var(--border);
+}
+.idea-stop:first-child { border-top: none; }
+.idea-stop-time {
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+  color: var(--text-faint);
+  min-width: 74px;
+  flex-shrink: 0;
+  padding-top: 2px;
+}
+.idea-stop-body { flex: 1; min-width: 0; }
+.idea-stop-title-row { display: flex; align-items: center; gap: 6px; flex-wrap: wrap; }
+.idea-stop-title { font-weight: 600; font-size: 13.5px; }
+.idea-stop-notes { font-size: 12.5px; color: var(--text-dim); margin-top: 3px; line-height: 1.4; }

@@ -1,4 +1,4 @@
-const CACHE_NAME = 'seoul2026-shell-v3';
+const CACHE_NAME = 'seoul2026-shell-v4';
 const SHELL_FILES = [
   './',
   './index.html',
@@ -9,6 +9,7 @@ const SHELL_FILES = [
   './calendar.js',
   './wishlist.js',
   './nearby.js',
+  './ideas.js',
   './manifest.json',
   './icons/icon-192.png',
   './icons/icon-512.png',

@@ -1,12 +1,14 @@
 import { initCalendarTab } from './calendar.js';
 import { initWishlistTab } from './wishlist.js';
 import { initNearbyTab } from './nearby.js';
+import { initIdeasTab } from './ideas.js';
 import { firebaseConfigured } from './firebase-config.js';
 
 const tabs = {
   calendar: { init: initCalendarTab, initialized: false },
   wishlist: { init: initWishlistTab, initialized: false },
   nearby: { init: initNearbyTab, initialized: false },
+  ideas: { init: initIdeasTab, initialized: false },
 };
 
 function showTab(name) {
