@@ -509,6 +509,30 @@ export const WISHLIST_ADDITIONS = [
     hours: 'Daily 9 AM–7 PM',
     travelFromGangnam: '783 Daejeon-ro, Dong-gu, Daejeon',
   }),
+  wish('JCM Spa Sauna (Yeoksam)', 'wellness', 37.4995, 127.0365, {
+    neighborhood: 'Yeoksam-dong, Gangnam-gu',
+    notes: 'A genuine local jjimjilbang, not a tourist-facing luxury spa — sauna, bathhouse, salt room, yellow clay steam room, massage chairs, and an on-site restaurant, a few minutes from the apartment.',
+    hours: '24 hours',
+    cost: '~₩12,000-15,000 entry',
+    travelFromGangnam: '16 Nonhyeon-ro 63-gil, Gangnam-gu — inside the Yeoksam Jonghap Market "The Blue" building, short walk from Yeoksam or Seolleung Station',
+    confidence: 'best-guess',
+    flagNote: 'Address and facility list found via web search (local blog/business listings), not independently verified — confirm current hours and pricing before going.',
+  }),
+  wish('Dragon Hill Spa', 'wellness', 37.5297, 126.9648, {
+    neighborhood: 'Yongsan-gu',
+    notes: "One of Seoul's largest, most famous jjimjilbangs — a 7-story all-in-one complex with hot/cold pools, medicinal baths, an ice room, infrared rooms, a mini cinema, and even a golf practice range. On-site massage available (women's floor is 3F). More of a full-day \"attraction\" than a quiet neighborhood sauna, but still mid-range pricing, not a luxury day-spa.",
+    hours: '24 hours',
+    cost: '~₩15,000-25,000 entry (extra for massage/treatments)',
+    travelFromGangnam: "40 Hangang-daero 21na-gil, Yongsan-gu — next to Yongsan Station / I'Park Mall, ~25-30 min from Gangnam via Line 2 → Line 1",
+  }),
+  wish('Jeongyeon Foot Massage (Gangnam)', 'wellness', 37.5175, 127.0405, {
+    neighborhood: 'Gangnam-gu',
+    notes: '28 years of reflexology experience — traditional Korean acupressure foot massage starting with a warm herbal foot soak. A well-established specialist rather than a hotel spa.',
+    cost: 'Foot massage packages typically ₩40,000-60,000+',
+    travelFromGangnam: '3F Unit 311, Gangnam Paragon, 338 Hakdong-ro, Gangnam-gu — ~5 min from Gangnam Station',
+    confidence: 'best-guess',
+    flagNote: "Address and details from the business's own site; coordinates estimated from the Hakdong-ro address, not geocoded — confirm before relying on it.",
+  }),
 ];
 
 // From two batches of Instagram food-post screenshots. Places that came with a full
