@@ -143,7 +143,7 @@ export const WISHLIST_SEED = [
   }),
   wish('Namsan Tower (N Seoul Tower)', 'landmark', 37.5512, 126.9882, {
     neighborhood: 'Yongsan-gu',
-    notes: 'Yongsan-gu.',
+    notes: "Seoul's iconic hilltop tower — panoramic 360° city views from the observatory deck, plus the famous rows of couples' padlocks along the terrace fences. The cable car ride up is scenic in its own right, especially at sunset.",
     hours: '10 AM–10:30 PM weekdays, 11 PM weekends (weather dependent)',
     cost: 'Observatory ~₩29,000 gate / ~₩18,400 online; cable car ~₩15,000 RT; combos ~₩35-38k',
     bestTime: 'Sunset into night (sunset ~7–7:30 PM) — arrive an hour early',
@@ -178,7 +178,7 @@ export const WISHLIST_SEED = [
   }),
   wish('Pixx Toy Box Photobooth (Seongsu)', 'photobooth', 37.5445, 127.0575, {
     neighborhood: 'Seongsu-dong',
-    notes: 'Second Pixx location.',
+    notes: 'Same toy-box concept as the Hongdae branch — retro props and colorful backdrops for the photo strips. Handy to pair with a Seongsu shopping stop rather than crossing town to Hongdae.',
     travelFromGangnam: '275-88 Seongsu-dong 2-ga',
   }),
   wish('Photolab Library (Sinsa)', 'photobooth', 37.5218, 127.0223, {
@@ -203,65 +203,65 @@ export const WISHLIST_SEED = [
 // ---------------------------------------------------------------------------
 export const FOOD_SEED = [
   // Jongno & Insadong
-  food('Imun Seolnongtang', '이문설농탕', 'Jongno / Insadong', 'Beef bone soup', '~₩15,000', 'Neighborhood Guide', 'Since 1904; arrive before noon.', 37.5721, 126.9902),
-  food('Tosokchon Samgyetang', '토속촌', 'Jongno / Insadong', 'Ginseng chicken soup', '₩17-20k', 'Neighborhood Guide', 'Lines by 11am. 서울 종로구 자하문로5길 5 (Chebu-dong, Seochon, near Gyeongbokgung).', 37.5758, 126.97),
-  food('Jeonju Yuhalmeoni Bibimbap', '전주유할머니', 'Jongno / Insadong', 'Bibimbap', '₩12-15k', 'Neighborhood Guide', '50+ yrs; stone-pot crispy rice; Korean menu only.', 37.573, 126.985),
-  food('Aux Petits Verres', '', 'Jongno / Insadong', 'Pastry/desserts', '', 'Culinary Class Wars (White Spoon — Park Joonwoo)', 'Belgian tarts.', 37.573, 126.985),
+  food('Imun Seolnongtang', '이문설농탕', 'Jongno 5-ga, Jongno-gu', 'Beef bone soup', '~₩15,000', 'Neighborhood Guide', 'Since 1904; arrive before noon.', 37.5721, 126.9902),
+  food('Tosokchon Samgyetang', '토속촌', 'Seochon (Chebu-dong), Jongno-gu', 'Ginseng chicken soup', '₩17-20k', 'Neighborhood Guide', 'Lines by 11am. 서울 종로구 자하문로5길 5 (Chebu-dong, Seochon, near Gyeongbokgung).', 37.5758, 126.97),
+  food('Jeonju Yuhalmeoni Bibimbap', '전주유할머니', 'Insadong, Jongno-gu', 'Bibimbap', '₩12-15k', 'Neighborhood Guide', '50+ yrs; stone-pot crispy rice; Korean menu only.', 37.573, 126.985),
+  food('Aux Petits Verres', '', 'Jongno-gu', 'Pastry/desserts', '', 'Culinary Class Wars (White Spoon — Park Joonwoo)', 'Belgian tarts.', 37.573, 126.985),
 
   // Hongdae & Mapo
-  food('Jeongdaepo', '정대포', 'Hongdae / Mapo', 'Thick-cut pork belly BBQ', '₩40-60k for 2', 'Neighborhood Guide', 'Charcoal at table.', 37.553, 126.9236),
-  food('Hongdae Walkable Street', '', 'Hongdae / Mapo', 'Street food market', '₩3-7k items', 'Neighborhood Guide', 'Open to 2am weekends.', 37.5563, 126.9238),
-  food('Tutu Chicken', '투투치킨', 'Hongdae / Mapo', 'Fried chicken & beer', 'Under ₩30k for 2', 'Neighborhood Guide', 'Walk-in only.', 37.5527, 126.9236),
-  food('Noorungji Tongdak', '누룽지통닭', 'Hongdae / Mapo', 'Fried chicken & beer', '₩30k for 2', 'Neighborhood Guide', 'Crispy coating.', 37.5527, 126.9236),
-  food('Lee Buk Bang', '', 'Hongdae / Mapo', 'North Korean', '', 'Culinary Class Wars (White Spoon — Choi Jihyung)', 'N. Korean sundae, Michelin-rated 5 yrs; Mapo.', 37.556, 126.942),
-  food('Jinjin', '', 'Hongdae / Mapo', 'Korean-Chinese', '', 'Culinary Class Wars (White Spoon — Hwang Jinseon)', 'Menbosha; Mapo.', 37.556, 126.942),
-  food('Toledo Pasta Bar', '', 'Hongdae / Mapo', 'Italian/Sicilian', '', 'Culinary Class Wars (Black Spoon, season winner — Kwon Sungjoon)', 'Mapo.', 37.556, 126.942),
+  food('Jeongdaepo', '정대포', 'Hongdae, Mapo-gu', 'Thick-cut pork belly BBQ', '₩40-60k for 2', 'Neighborhood Guide', 'Charcoal at table.', 37.553, 126.9236),
+  food('Hongdae Walkable Street', '', 'Hongdae, Mapo-gu', 'Street food market', '₩3-7k items', 'Neighborhood Guide', 'Open to 2am weekends.', 37.5563, 126.9238),
+  food('Tutu Chicken', '투투치킨', 'Hongdae, Mapo-gu', 'Fried chicken & beer', 'Under ₩30k for 2', 'Neighborhood Guide', 'Walk-in only.', 37.5527, 126.9236),
+  food('Noorungji Tongdak', '누룽지통닭', 'Hongdae, Mapo-gu', 'Fried chicken & beer', '₩30k for 2', 'Neighborhood Guide', 'Crispy coating.', 37.5527, 126.9236),
+  food('Lee Buk Bang', '', 'Mapo-gu', 'North Korean', '', 'Culinary Class Wars (White Spoon — Choi Jihyung)', 'N. Korean sundae, Michelin-rated 5 yrs; Mapo.', 37.556, 126.942),
+  food('Jinjin', '', 'Mapo-gu', 'Korean-Chinese', '', 'Culinary Class Wars (White Spoon — Hwang Jinseon)', 'Menbosha; Mapo.', 37.556, 126.942),
+  food('Toledo Pasta Bar', '', 'Mapo-gu', 'Italian/Sicilian', '', 'Culinary Class Wars (Black Spoon, season winner — Kwon Sungjoon)', 'Mapo.', 37.556, 126.942),
 
   // Myeongdong & Sinchon
-  food('Hadongkwan', '하동관', 'Myeongdong / Sinchon', 'Beef bone broth', '≤₩15,000', 'Neighborhood Guide', 'Since 1939; single-menu; lines before 10am.', 37.5636, 126.9834),
-  food('Myeongdong Street Food Alley', '', 'Myeongdong / Sinchon', 'Street snacks', '', 'Neighborhood Guide', 'Gyeran-ppang, hodugwaja, tteokbokki, corn dogs.', 37.5636, 126.9834),
-  food("Yonsei-area student restaurants", '', 'Myeongdong / Sinchon', 'Korean set meals', '₩8-12k', 'Neighborhood Guide', 'Unlimited banchan.', 37.5665, 126.9385),
+  food('Hadongkwan', '하동관', 'Myeongdong, Jung-gu', 'Beef bone broth', '≤₩15,000', 'Neighborhood Guide', 'Since 1939; single-menu; lines before 10am.', 37.5636, 126.9834),
+  food('Myeongdong Street Food Alley', '', 'Myeongdong, Jung-gu', 'Street snacks', '', 'Neighborhood Guide', 'Gyeran-ppang, hodugwaja, tteokbokki, corn dogs.', 37.5636, 126.9834),
+  food("Yonsei-area student restaurants", '', 'Sinchon, Seodaemun-gu', 'Korean set meals', '₩8-12k', 'Neighborhood Guide', 'Cheap, filling home-style set meals (백반) aimed at students — unlimited banchan refills, no-frills seating, near Yonsei/Sogang/Ewha campuses.', 37.5665, 126.9385),
 
   // Gangnam & Apgujeong
-  food('Yeontabal', '연탄발', 'Gangnam / Apgujeong', 'Charcoal-grilled beef', '', 'Neighborhood Guide', 'Bulgogi, short ribs; smart casual.', 37.5172, 127.0473),
-  food('Han Chu', '한추', 'Gangnam / Apgujeong', 'Fried chicken & beer', '₩20-30k for 2', 'Neighborhood Guide', '20+ yrs; double-fried.', 37.4979, 127.0276),
-  food('Mingles', '', 'Gangnam / Apgujeong', 'Fine dining', 'Lunch ₩88k / dinner ₩220k', 'Michelin 2★, Asia\'s 50 Best #4', 'Book 2-4 wks out.', 37.5245, 127.0359),
-  food('Choi Dot', '', 'Gangnam / Apgujeong', 'Haute cuisine', '', 'Culinary Class Wars (White Spoon — Choi Hyunseok)', 'Jang Trio Steak.', 37.5245, 127.0359),
-  food('Tian Mi Mi', '', 'Gangnam / Apgujeong', 'Chinese/HK, dim sum', '', 'Culinary Class Wars (White Spoon — Jung Jisun)', 'Gangnam & Hongdae branches.', 37.5172, 127.0286),
-  food('Yun Seoul / Myeon Seoul', '', 'Gangnam / Apgujeong', 'Noodles', '', 'Culinary Class Wars (White Spoon — Kim Doyun)', 'Perilla oil noodles.', 37.5172, 127.0286),
-  food('EVETT', '', 'Gangnam / Apgujeong', 'Korean-Western fusion', '', 'Culinary Class Wars (White Spoon — Joseph Lidgerwood)', 'Lemongrass ants.', 37.5245, 127.0359),
-  food('Hong Bo Gak', '', 'Gangnam / Apgujeong', 'Chinese', '', 'Culinary Class Wars (Yeo Gyeongrae / Park Eunyoung)', 'Moja shrimp.', 37.5172, 127.0286),
-  food('Bistro Spark', '', 'Gangnam / Apgujeong', 'Italian, pasta', '', 'Culinary Class Wars (Black Spoon — Shawn Park)', '', 37.5172, 127.0286),
-  food('Pono Buono', '', 'Gangnam / Apgujeong', 'Italian fusion', '', 'Culinary Class Wars (Black Spoon — Kim Taesung)', 'Black truffle risotto.', 37.5172, 127.0286),
-  food('Trid Seoul', '', 'Gangnam / Apgujeong', 'Fine dining', '', 'Michelin-starred, Culinary Class Wars (Black Spoon — Kang Seungwon)', 'Triple choux.', 37.5172, 127.0286),
+  food('Yeontabal', '연탄발', 'Gangnam-gu', 'Charcoal-grilled beef', '', 'Neighborhood Guide', 'Charcoal-grilled bulgogi and short ribs cooked tableside over real coals — the smoky char is the whole point. Smart-casual, good for a proper sit-down dinner rather than a quick bite.', 37.5172, 127.0473),
+  food('Han Chu', '한추', 'Gangnam-gu', 'Fried chicken & beer', '₩20-30k for 2', 'Neighborhood Guide', 'Neighborhood institution for 20+ years — Korean-style double-fried chicken (extra-crackly skin, less greasy than a single fry) with beer. Casual, loud, and reliably good.', 37.4979, 127.0276),
+  food('Mingles', '', 'Cheongdam-dong, Gangnam-gu', 'Fine dining', 'Lunch ₩88k / dinner ₩220k', 'Michelin 3★ — Korea\'s first', 'Chef Kang Mingoo, modern Korean rooted in jang (fermented sauces), grain, and seasonal produce. Book 2-4 wks out.', 37.5245, 127.0359),
+  food('Choi Dot', '', 'Apgujeong-dong, Gangnam-gu', 'Haute cuisine', '', 'Culinary Class Wars (White Spoon — Choi Hyunseok)', 'From celebrity chef Choi Hyunseok (Culinary Class Wars White Spoon). Signature is the Jang Trio Steak — a steak built around three different fermented Korean sauces (jang), showing how far modern Korean fine dining has pushed a very old ingredient.', 37.5245, 127.0359),
+  food('Tian Mi Mi', '', 'Gangnam-gu', 'Chinese/HK, dim sum', '', 'Culinary Class Wars (White Spoon — Jung Jisun)', 'Chinese/Hong Kong-style dim sum from chef Jung Jisun (Culinary Class Wars White Spoon) — has both a Gangnam and a Hongdae branch, so check which is closer before booking.', 37.5172, 127.0286),
+  food('Yun Seoul / Myeon Seoul', '', 'Gangnam-gu', 'Noodles', '', 'Culinary Class Wars (White Spoon — Kim Doyun)', 'Noodle-focused restaurant from chef Kim Doyun (Culinary Class Wars White Spoon), known for perilla-oil noodles — a nuttier, earthier take on cold noodles than the usual sesame-oil version.', 37.5172, 127.0286),
+  food('EVETT', '', 'Apgujeong-dong, Gangnam-gu', 'Korean-Western fusion', '', 'Culinary Class Wars (White Spoon — Joseph Lidgerwood)', 'Korean-Western fusion from chef Joseph Lidgerwood (Culinary Class Wars White Spoon) — one of the show\'s more adventurous kitchens; the lemongrass ants dish is the one people talk about, so come open-minded.', 37.5245, 127.0359),
+  food('Hong Bo Gak', '', 'Gangnam-gu', 'Chinese', '', 'Culinary Class Wars (Yeo Gyeongrae / Park Eunyoung)', 'Chinese restaurant from chefs Yeo Gyeongrae and Park Eunyoung (Culinary Class Wars) — the moja shrimp (spicy, Sichuan-leaning) is the dish to order.', 37.5172, 127.0286),
+  food('Bistro Spark', '', 'Gangnam-gu', 'Italian, pasta', '', 'Culinary Class Wars (Black Spoon — Shawn Park)', 'Italian, pasta-focused, from chef Shawn Park (Culinary Class Wars Black Spoon) — a smaller, more intimate bistro setting than most of the other Gangnam Culinary Class Wars spots.', 37.5172, 127.0286),
+  food('Pono Buono', '', 'Gangnam-gu', 'Italian fusion', '', 'Culinary Class Wars (Black Spoon — Kim Taesung)', 'Italian fusion from chef Kim Taesung (Culinary Class Wars Black Spoon) — black truffle risotto is the headline dish.', 37.5172, 127.0286),
+  food('Trid Seoul', '', 'Cheongdam-dong, Gangnam-gu', 'Fine dining', '', 'Michelin-starred, Culinary Class Wars (Black Spoon — Kang Seungwon)', 'Michelin-starred, from chef Kang Seungwon (Culinary Class Wars Black Spoon) — the triple choux dessert (three variations on choux pastry in one dish) is a good reason to save room.', 37.5172, 127.0286),
 
   // Sindang & Jamsil
-  food('Sindang Tteokbokki Town', '', 'Sindang / Jamsil', 'Spicy rice cakes', '₩5-10k', 'Neighborhood Guide', 'Since 1970s; pot-served at table.', 37.5657, 127.0177),
-  food('Omori Jjigae', '오모리찌개', 'Sindang / Jamsil', 'Kimchi stew', '₩10-12k', 'Neighborhood Guide', 'Aged-cabbage broth; near KSPO Dome.', 37.5206, 127.1218),
-  food('Gosari Express', '', 'Sindang / Jamsil', 'Plant-based, gosari sauce', '', 'Michelin Bib Gourmand 2026 (new)', 'Jungang Market, Jung-gu.', 37.5657, 126.9976),
-  food('Andongjip Son Kalguksi / Cheerful Drinking Table', '', 'Sindang / Jamsil', 'Hand-cut noodles', '', 'Culinary Class Wars (Black Spoon — Kim Miryung)', 'Dongdaemun & Dobong.', 37.5744, 127.0098),
-  food('ChoKwang101 / 201', '', 'Sindang / Jamsil', 'Chinese, Dongpo pork', '', 'Culinary Class Wars (Black Spoon — Cho Kwangho)', 'Songpa.', 37.5145, 127.1058),
-  food('Neo', '', 'Sindang / Jamsil', 'Japanese, buckwheat gimbap', '', 'Culinary Class Wars (White Spoon — Choi Kangrok)', 'Songpa.', 37.5145, 127.1058),
+  food('Sindang Tteokbokki Town', '', 'Sindang-dong, Jung-gu', 'Spicy rice cakes', '₩5-10k', 'Neighborhood Guide', 'Since 1970s; pot-served at table.', 37.5657, 127.0177),
+  food('Omori Jjigae', '오모리찌개', 'Bangi-dong, Songpa-gu', 'Kimchi stew', '₩10-12k', 'Neighborhood Guide', 'Aged-cabbage broth; near KSPO Dome.', 37.5206, 127.1218),
+  food('Gosari Express', '', 'Jungang Market, Jung-gu', 'Plant-based, gosari sauce', '', 'Michelin Bib Gourmand 2026 (new)', 'Jungang Market, Jung-gu.', 37.5657, 126.9976),
+  food('Andongjip Son Kalguksi / Cheerful Drinking Table', '', 'Dongdaemun-gu', 'Hand-cut noodles', '', 'Culinary Class Wars (Black Spoon — Kim Miryung)', 'Dongdaemun & Dobong.', 37.5744, 127.0098),
+  food('ChoKwang101 / 201', '', 'Songpa-gu', 'Chinese, Dongpo pork', '', 'Culinary Class Wars (Black Spoon — Cho Kwangho)', 'Songpa.', 37.5145, 127.1058),
+  food('Neo', '', 'Songpa-gu', 'Japanese, buckwheat gimbap', '', 'Culinary Class Wars (White Spoon — Choi Kangrok)', 'Songpa.', 37.5145, 127.1058),
 
   // Elsewhere in Seoul
-  food('Fabri Kitchen', '', 'Elsewhere in Seoul', 'Italian seafood', '', 'Culinary Class Wars (White Spoon — Fabrizio Ferrari)', 'PPP pasta; Yongsan-gu.', 37.5326, 126.9905),
-  food('Touch the Sky', '', 'Elsewhere in Seoul', 'French', '', 'Culinary Class Wars (White Spoon — Cho Eunju)', 'Seafood course; Yeongdeungpo.', 37.5219, 126.9026),
-  food('Edamame Namyoung', '', 'Elsewhere in Seoul', 'Chinese-Japanese', '', 'Culinary Class Wars (Black Spoon — Jacob Hyun)', 'Spicy yuringi; Yongsan.', 37.5326, 126.9705),
-  food('Buto Hannam', '', 'Elsewhere in Seoul', 'Fusion, vegetarian', '', 'Culinary Class Wars (Black Spoon — Lim Heewon)', 'Yongsan/Hannam.', 37.5347, 127.0007),
-  food('Deepin Oksu / Deepin Sindang', '', 'Elsewhere in Seoul', 'Bistro/Italian', '', 'Culinary Class Wars (Black Spoon — Yoon Namno)', 'Chitarra mussel pasta; Seongdong/Jung.', 37.5447, 127.0165),
+  food('Fabri Kitchen', '', 'Yongsan-gu', 'Italian seafood', '', 'Culinary Class Wars (White Spoon — Fabrizio Ferrari)', 'PPP pasta; Yongsan-gu.', 37.5326, 126.9905),
+  food('Touch the Sky', '', 'Yeongdeungpo-gu', 'French', '', 'Culinary Class Wars (White Spoon — Cho Eunju)', 'Seafood course; Yeongdeungpo.', 37.5219, 126.9026),
+  food('Edamame Namyoung', '', 'Namyeong-dong, Yongsan-gu', 'Chinese-Japanese', '', 'Culinary Class Wars (Black Spoon — Jacob Hyun)', 'Spicy yuringi; Yongsan.', 37.5326, 126.9705),
+  food('Buto Hannam', '', 'Hannam-dong, Yongsan-gu', 'Fusion, vegetarian', '', 'Culinary Class Wars (Black Spoon — Lim Heewon)', 'Yongsan/Hannam.', 37.5347, 127.0007),
+  food('Deepin Oksu / Deepin Sindang', '', 'Oksu-dong, Seongdong-gu', 'Bistro/Italian', '', 'Culinary Class Wars (Black Spoon — Yoon Namno)', 'Chitarra mussel pasta; Seongdong/Jung.', 37.5447, 127.0165),
 
   // Fine dining / special occasion
-  food('Mosu', '', 'Fine dining', 'Haute cuisine', 'Dinner ₩300k+', 'Michelin 3★, Asia\'s 50 Best #41', 'Book 3-4 wks out.', 37.5347, 127.0007),
-  food('Onjium', '', 'Fine dining', 'Research-based historical Korean cuisine', '', 'Michelin 2★, Asia\'s 50 Best #14', '', 37.585, 126.988),
-  food('La Yeon', '', 'Fine dining', 'Kaiseki-style', 'Dinner ₩260k', 'Michelin 3★ (Shilla Hotel)', 'Book 4 wks out.', 37.5575, 127.0055),
-  food('7th Door', '', 'Fine dining', 'Fermentation-focused', 'Lunch ₩68k', 'Michelin ★, Asia\'s 50 Best #49', '', 37.5245, 127.0359),
+  food('Mosu', '', 'Hannam-dong, Yongsan-gu', 'Haute cuisine', 'Dinner ₩300k+', 'Michelin 2★ (down from 3★ in 2024)', 'Chef Ahn Sung-jae. Reservations open ~1 month out and go fast — the restaurant has also had periods of temporary closure/relocation, so confirm it\'s currently open before counting on it. Address: 4 Hoenamu-ro 41-gil, Yongsan-gu, between Itaewon and Hangangjin stations (Line 6).', 37.5347, 127.0007, { confidence: 'best-guess', flagNote: 'Michelin rating and address confirmed via web search (2026 guide); the restaurant has a history of temporary closures, so double-check current status before booking.' }),
+  food('Onjium', '', 'Hyoja-dong, Jongno-gu', 'Research-based historical Korean cuisine', '', 'Michelin 1★, Asia\'s 50 Best #10 (2025)', 'Chef Cho Eun-hee reinterprets Joseon-dynasty royal-court recipes; intimate 25-seat dining room. Address: 49 Hyoja-ro, 4F, Jongno-gu. Tue-Fri, lunch 12-3 PM / dinner 6-10 PM.', 37.585, 126.988, { confidence: 'best-guess', flagNote: 'Michelin rating corrected via web search — was previously listed as 2★.' }),
+  food('La Yeon', '', 'Jangchung-dong, Jung-gu', 'Kaiseki-style', 'Dinner ₩260k', 'Michelin 2★ (down from 3★) — Shilla Hotel, 23rd floor', 'Book 4 wks out. Address: 249 Dongho-ro, Jangchung-dong, Jung-gu.', 37.5575, 127.0055, { confidence: 'best-guess', flagNote: 'Michelin rating corrected via web search — was previously listed as 3★.' }),
+  food('7th Door', '', 'Cheongdam-dong, Gangnam-gu', 'Fermentation-focused', 'Lunch ₩68k', 'Michelin 1★, Asia\'s 50 Best #49', 'Chef Kim Dae-chun\'s modern Korean, built around fermentation and aging. Address: 4F, 41 Hakdong-ro 97-gil, Gangnam-gu, near Cheongdam Park.', 37.5245, 127.0359),
 
   // New Michelin Bib Gourmand 2026 (outside Seoul core)
-  food('3rd Samgyetang', '', 'Bib Gourmand 2026', 'Ginseng chicken soup', '', 'Michelin Bib Gourmand 2026', 'Since 1973; 40+ ingredient broth. Seocho-gu.', 37.4837, 127.0324),
-  food('Sobakeeri Suzu', '', 'Bib Gourmand 2026', 'Korean buckwheat soba', '', 'Michelin Bib Gourmand 2026', 'Japan-trained chef.', 37.5665, 126.978, { confidence: 'unverified', flagNote: 'Location within Seoul not specified in source.' }),
-  food('Andeok', '', 'Bib Gourmand 2026', 'Beef naengguksu, mandutguk', '', 'Michelin Bib Gourmand 2026', 'Jongno-gu.', 37.573, 126.985),
-  food('Oilje', '', 'Bib Gourmand 2026', 'Perilla seed miyeokguk, cast-iron pot rice', '', 'Michelin Bib Gourmand 2026', 'Yongsan-gu.', 37.5326, 126.9905),
-  food('Moemiljip / Songheonjip / Pyeongyangjip', '', 'Bib Gourmand 2026', 'Buckwheat noodles / tteokgalbi / N. Korean mandu', '', 'Michelin Bib Gourmand 2026', 'Busan — good picks if you\'re there.', 35.1156, 129.0403),
+  food('3rd Samgyetang', '', 'Seocho-gu', 'Ginseng chicken soup', '', 'Michelin Bib Gourmand 2026', 'Since 1973; 40+ ingredient broth. Seocho-gu.', 37.4837, 127.0324),
+  food('Sobakeeri Suzu', '', 'Seoul (exact neighborhood unknown)', 'Korean buckwheat soba', '', 'Michelin Bib Gourmand 2026', 'Japan-trained chef reinterprets soba using Korean-grown buckwheat and a less common "sotoichi" flour ratio — chilled noodles with dipping sauce, or alongside tempura and braised dishes.', 37.5665, 126.978, { confidence: 'unverified', flagNote: 'Could not find a street address via web search, even checking the Michelin Guide listing directly (blocked from this environment) — only a phone number turned up. Coordinates are a rough Seoul-center placeholder, not a real location — confirm before relying on this one.' }),
+  food('Andeok', '', 'Jongno-gu', 'Beef naengguksu, mandutguk', '', 'Michelin Bib Gourmand 2026', 'Jongno-gu.', 37.573, 126.985),
+  food('Oilje', '', 'Yongsan-gu', 'Perilla seed miyeokguk, cast-iron pot rice', '', 'Michelin Bib Gourmand 2026', 'Yongsan-gu.', 37.5326, 126.9905),
+  food('Moemiljip / Songheonjip / Pyeongyangjip', '', 'Busan', 'Buckwheat noodles / tteokgalbi / N. Korean mandu', '', 'Michelin Bib Gourmand 2026', 'Busan — good picks if you\'re there.', 35.1156, 129.0403),
 
   // User-submitted additions (Aug 16 batch)
   food('Shin Sikdang', '신식당', 'Outside Seoul', 'Tteok-galbi + bamboo-tube rice', '', 'User submission', '100-yr-old restaurant. Damyang, Jeollanam-do — not Seoul, ~4hr away. 전남 담양군 담양읍 담주2길 18-13.', 35.3211, 126.988),
@@ -447,7 +447,7 @@ export const WISHLIST_ADDITIONS = [
   }),
   wish('Numbering', 'shopping', 37.5248, 127.0362, {
     neighborhood: 'Gangnam-gu',
-    notes: 'Jewelry.',
+    notes: 'Minimalist, everyday-wearable fine jewelry — rings, necklaces, and stacking pieces rather than statement jewelry. A quieter shopping stop than the Apgujeong flagship boutiques nearby.',
     hours: '11 AM–8 PM',
     travelFromGangnam: '38 Apgujeong-ro 48-gil, Gangnam-gu',
   }),
@@ -456,6 +456,58 @@ export const WISHLIST_ADDITIONS = [
     notes: 'Gold/jewelry shopping street.',
     hours: '10 AM–8 PM',
     travelFromGangnam: 'Near Exit 1, Jongno 3-ga Station (Lines 1, 3, 5)',
+  }),
+  wish('Gwangjang Market', 'market', 37.5701, 126.9996, {
+    neighborhood: 'Jongno-gu',
+    notes: "Seoul's most famous traditional market — legendary for bindaetteok (mung bean pancakes) and mayak gimbap (tiny, addictively good seaweed rice rolls), plus a huge secondhand/vintage silk and hanbok fabric section upstairs.",
+    hours: 'Most food stalls ~9 AM–10 PM (varies by vendor)',
+    travelFromGangnam: 'Near Jongno 5-ga Station, Line 1',
+  }),
+  wish('Mangwon Market', 'market', 37.5563, 126.9027, {
+    neighborhood: 'Mangwon-dong, Mapo-gu',
+    notes: "40+ year old neighborhood market, famous for Q's Dakgangjeong (sweet-spicy fried chicken bites) and Hwanginho croquettes — less touristy and more of a locals' market than Gwangjang.",
+    hours: 'Daily 10 AM–9 PM (varies by store)',
+    travelFromGangnam: '27 Poeun-ro 6-gil, Mapo-gu — west of Hongdae along the Han River side',
+  }),
+  wish('Bukchon Hanok Village', 'landmark', 37.5826, 126.9832, {
+    neighborhood: 'Jongno-gu',
+    notes: 'Historic hanok (traditional house) neighborhood on the hillside between Gyeongbokgung and Changdeokgung — narrow alleys, photogenic rooflines, small tea houses and craft shops tucked into converted hanoks. Still a residential area, so keep noise down.',
+    bestTime: 'Morning, before tour groups arrive',
+  }),
+  wish('Mullae-dong', 'landmark', 37.5159, 126.8949, {
+    neighborhood: 'Yeongdeungpo-gu',
+    notes: "Former ironworks district turned arts quarter — working metal shops sit right next to galleries, indie bars, and studios built into the old machine works. Seoul's answer to a Brooklyn/Berlin industrial-arts neighborhood, with a rougher, less polished feel than Seongsu.",
+    travelFromGangnam: 'Mullae Station, Line 2',
+  }),
+  wish('Hwaseong Fortress', 'landmark', 37.2857, 127.0108, {
+    neighborhood: 'Suwon, Gyeonggi-do',
+    notes: 'UNESCO World Heritage 18th-century fortress wall encircling old Suwon — ~5.7km of walkable ramparts, gates, and watchtowers with good city views. Can easily fill a half-day; a fortress train/shuttle covers the loop if you don\'t want to walk all of it.',
+    travelFromGangnam: '~40-50 min via subway (Bundang/Suin-Bundang Line to Hwaseo or Suwon Station)',
+    tips: 'Note: "Hwasung" is the same place (alternate romanization) — no need to plan for it separately.',
+  }),
+  wish('Starfield Library', 'landmark', 37.5111, 127.059, {
+    neighborhood: 'Samseong-dong, Gangnam-gu (COEX Mall)',
+    notes: 'Two-story, ~13m-tall bookshelf atrium inside COEX Mall — one of the most photographed indoor spots in Seoul. Free to visit, browse, or read; attached to the whole COEX underground mall/aquarium complex.',
+    hours: 'Mall hours, typically 10 AM–10 PM',
+    cost: 'Free',
+    travelFromGangnam: 'Samseong Station, Line 2 — one stop from Yeoksam',
+  }),
+  wish('Daejeon (day trip)', 'trip', 36.3504, 127.3845, {
+    neighborhood: 'Daejeon',
+    notes: 'Compact enough for a day trip from Seoul — pair Daejeon Jungang Market and Jangtaesan Forest with a stop at Sungsimdang (the famous bakery, already on the food list) for tuigim-soboro bread.',
+    cost: 'KTX ~₩23,000-33,000 one-way depending on train type',
+    travelFromGangnam: 'KTX from Seoul Station, ~50 min direct',
+  }),
+  wish('Jangtaesan Recreational Forest', 'park', 36.3033, 127.3283, {
+    neighborhood: 'Seo-gu, Daejeon',
+    notes: "Metasequoia (redwood) tree-lined pathway plus the Skyway observation deck looking out over the forest canopy — one of Daejeon's best-known nature spots, especially striking in the golden-hour light.",
+    travelFromGangnam: '461 Jangan-ro, Seo-gu, Daejeon — pairs naturally with a Daejeon day trip',
+  }),
+  wish('Daejeon Jungang Market', 'market', 36.3283, 127.4297, {
+    neighborhood: 'Dong-gu, Daejeon',
+    notes: 'One of Korea\'s most famous traditional markets — actually several markets combined, with distinct dried-seafood, hardware, fish, herbal-medicine, hanbok, and food streets. Near Daejeon Station.',
+    hours: 'Daily 9 AM–7 PM',
+    travelFromGangnam: '783 Daejeon-ro, Dong-gu, Daejeon',
   }),
 ];
 
@@ -482,6 +534,11 @@ export const FOOD_ADDITIONS = [
   }),
   food('Cheongsudang (Gimpo)', '청수당 김포', 'Gurae-dong, Gimpo-si — not Seoul', 'Bakery / dessert café', '', 'Instagram', 'Large (~825㎡) bakery café, Japanese-style seating, rated 4.4. ~30–40 min from Gangnam by car, in Gimpo (Gyeonggi-do), not Seoul proper. 경기도 김포시 김포한강10로133번길 75. Hours 10 AM–10 PM (last order 9:30 PM).', 37.6404, 126.6274),
   food('Seoyang Myeonok (Seosunra-gil)', '서양면옥 서순라길점', 'Jongno-gu', 'Korean-Italian fusion', '', 'Instagram (@seoyangmyunok.seoul)', 'Hanwoo yukhoe perilla-oil capellini ₩22,000; spicy tomato soft-tofu pasta ₩22,000. 서울 종로구 율곡로8길 45 1층. Hours 12–9:30 PM (break 4–5 PM), closed Tuesdays.', 37.5735, 126.9915),
+  food('Soigné', '', 'Sinsa-dong, Gangnam-gu', 'French-Italian-Korean fine dining', '', 'Michelin 2★', "Chef Jun Lee's contemporary tasting menus blend French and Italian technique with Korean sensibility. 2F Sinsa Square, 652 Gangnam-daero — ~500m from Garosu-gil.", 37.5202, 127.0229),
+  food('London Bagel Museum (Anguk)', '런던베이글뮤지엄', 'Anguk-dong, Jongno-gu', 'Bagel bakery café', '', 'User request', "Seoul's original, most-hyped bagel spot — long queues (often 1-2 hrs) for cream-cheese-loaded bagels in a vintage-London-styled space. Pairs naturally with a Bukchon/Gwangjang day. Other branches: Dosan (Gangnam), Jamsil (Lotte World Tower), Suwon.", 37.5765, 126.985, {
+    confidence: 'best-guess',
+    flagNote: 'Multiple branches exist (Anguk, Dosan, Jamsil, Suwon) — picked Anguk since it\'s the original and pairs with the Bukchon/Gwangjang Market area. Swap the address if a different branch is more convenient.',
+  }),
 ];
 
 async function seedBatch(entries) {

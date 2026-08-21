@@ -22,6 +22,7 @@ export const CATEGORY_LABELS = {
   wellness: 'Wellness & Beauty',
   bar: 'Bars & Nightlife',
   landmark: 'Landmarks & Views',
+  market: 'Markets',
   other: 'Other',
 };
 
