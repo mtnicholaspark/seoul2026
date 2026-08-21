@@ -45,6 +45,7 @@ export async function initNearbyTab() {
       <button data-type="food">🍜 Food</button>
       <button data-type="activity">📍 Activities</button>
     </div>
+    <div class="filter-sub-label" id="nearby-sub-filter-label" hidden></div>
     <div class="filter-row" id="nearby-sub-filter"></div>
     <div class="toolbar-row">
       <div class="filter-row" id="nearby-sort-row">
@@ -254,9 +255,13 @@ function render() {
       ? unscheduledActivities().map(normalizeActivity)
       : [];
 
+  const subFilterLabelEl = document.getElementById('nearby-sub-filter-label');
   if (typeFilter === 'all') {
     subFilterEl.innerHTML = '';
+    subFilterLabelEl.hidden = true;
   } else {
+    subFilterLabelEl.hidden = false;
+    subFilterLabelEl.textContent = typeFilter === 'food' ? 'Filter by neighborhood' : 'Filter by category';
     const values = [...new Set(preFilterPool.map((m) => m.filterValue))].sort();
     subFilterEl.innerHTML = ['all', ...values]
       .map(
@@ -343,10 +348,10 @@ function renderCard(m) {
     : '';
   const statusChip = isFood
     ? raw.visited
-      ? '<span class="chip chip-muted">✓ Visited</span>'
+      ? '<span class="chip chip-stamp">Visited</span>'
       : ''
     : raw.done
-    ? '<span class="chip chip-muted">✓ Done</span>'
+    ? '<span class="chip chip-stamp">Done</span>'
     : '';
   const notes = isFood ? raw.notes : [raw.notes, raw.tips].filter(Boolean).join(' · ');
   const personalNote =

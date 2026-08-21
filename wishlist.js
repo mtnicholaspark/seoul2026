@@ -28,10 +28,12 @@ export const CATEGORY_LABELS = {
 let items = [];
 let unsubscribe = null;
 let groupBy = 'category'; // 'category' | 'neighborhood'
+let searchQuery = '';
 
 export function initWishlistTab() {
   const container = document.getElementById('wishlist-tab');
   container.innerHTML = `
+    <input type="text" id="wishlist-search" class="search-input" placeholder="Search the wishlist…">
     <div class="segmented" id="wishlist-groupby">
       <button data-group="category" class="active">By Category</button>
       <button data-group="neighborhood">By Neighborhood</button>
@@ -46,6 +48,10 @@ export function initWishlistTab() {
       container.querySelectorAll('#wishlist-groupby button').forEach((b) => b.classList.toggle('active', b === btn));
       render();
     });
+  });
+  document.getElementById('wishlist-search').addEventListener('input', (e) => {
+    searchQuery = e.target.value;
+    render();
   });
 
   if (unsubscribe) unsubscribe();
@@ -67,10 +73,26 @@ function render() {
     return;
   }
 
+  const q = searchQuery.trim().toLowerCase();
+  const visible = q
+    ? items.filter((item) =>
+        [item.title, item.neighborhood, item.notes, item.tips]
+          .filter(Boolean)
+          .join(' ')
+          .toLowerCase()
+          .includes(q)
+      )
+    : items;
+
+  if (visible.length === 0) {
+    listEl.innerHTML = `<div class="empty-state">Nothing matches "${escapeHtml(searchQuery)}".</div>`;
+    return;
+  }
+
   let groups, order, labelFor;
   if (groupBy === 'neighborhood') {
     groups = {};
-    items.forEach((item) => {
+    visible.forEach((item) => {
       const key = item.neighborhood?.trim() || 'Unspecified';
       (groups[key] = groups[key] || []).push(item);
     });
@@ -78,7 +100,7 @@ function render() {
     labelFor = (key) => key;
   } else {
     groups = {};
-    items.forEach((item) => {
+    visible.forEach((item) => {
       const cat = item.category && CATEGORY_LABELS[item.category] ? item.category : 'other';
       (groups[cat] = groups[cat] || []).push(item);
     });
